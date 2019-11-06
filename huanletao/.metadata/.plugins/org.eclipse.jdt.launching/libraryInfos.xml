@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<libraryInfos>
+<libraryInfo home="F:\soft\jdk1.8\intall\jdk1.8.0_211" version="1.8.0_211">
+<bootpath>
+<entry path="F:\soft\jdk1.8\intall\jdk1.8.0_211\jre\lib\resources.jar"/>
+<entry path="F:\soft\jdk1.8\intall\jdk1.8.0_211\jre\lib\rt.jar"/>
+<entry path="F:\soft\jdk1.8\intall\jdk1.8.0_211\jre\lib\sunrsasign.jar"/>
+<entry path="F:\soft\jdk1.8\intall\jdk1.8.0_211\jre\lib\jsse.jar"/>
+<entry path="F:\soft\jdk1.8\intall\jdk1.8.0_211\jre\lib\jce.jar"/>
+<entry path="F:\soft\jdk1.8\intall\jdk1.8.0_211\jre\lib\charsets.jar"/>
+<entry path="F:\soft\jdk1.8\intall\jdk1.8.0_211\jre\lib\jfr.jar"/>
+<entry path="F:\soft\jdk1.8\intall\jdk1.8.0_211\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="F:\soft\jdk1.8\intall\jdk1.8.0_211\jre\lib\ext"/>
+<entry path="C:\Windows\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="F:\soft\jdk1.8\intall\jdk1.8.0_211\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="F:\soft\jdk1.8\intall\jdk1.8.0_211\jre2" version="1.8.0_211">
+<bootpath>
+<entry path="F:\soft\jdk1.8\intall\jdk1.8.0_211\jre2\lib\resources.jar"/>
+<entry path="F:\soft\jdk1.8\intall\jdk1.8.0_211\jre2\lib\rt.jar"/>
+<entry path="F:\soft\jdk1.8\intall\jdk1.8.0_211\jre2\lib\sunrsasign.jar"/>
+<entry path="F:\soft\jdk1.8\intall\jdk1.8.0_211\jre2\lib\jsse.jar"/>
+<entry path="F:\soft\jdk1.8\intall\jdk1.8.0_211\jre2\lib\jce.jar"/>
+<entry path="F:\soft\jdk1.8\intall\jdk1.8.0_211\jre2\lib\charsets.jar"/>
+<entry path="F:\soft\jdk1.8\intall\jdk1.8.0_211\jre2\lib\jfr.jar"/>
+<entry path="F:\soft\jdk1.8\intall\jdk1.8.0_211\jre2\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="F:\soft\jdk1.8\intall\jdk1.8.0_211\jre2\lib\ext"/>
+<entry path="C:\Windows\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="F:\soft\jdk1.8\intall\jdk1.8.0_211\jre2\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+</libraryInfos>

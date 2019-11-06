@@ -1,0 +1,17 @@
+server.port=8103
+zuul.sensitive-headers=
+spring.application.name=zuul-service
+eureka.client.serviceUrl.defaultZone=http://localhost:8888/eureka
+
+zuul.routes.product.path=/zuul-product/**
+zuul.routes.product.serviceId=productservice
+zuul.routes.img.path=/zuul-pic/**
+zuul.routes.img.serviceId=imgservice
+zuul.routes.cart.path=/zuul-cart/**
+zuul.routes.cart.serviceId=huanletao-cart
+zuul.routes.user.path=/zuul-user/**
+zuul.routes.user.serviceId=userservice
+zuul.routes.order.path=/zuul-order/**
+zuul.routes.order.serviceId=orderservice
+zuul.routes.order.path=/zuul-search/**
+zuul.routes.order.serviceId=orderservice

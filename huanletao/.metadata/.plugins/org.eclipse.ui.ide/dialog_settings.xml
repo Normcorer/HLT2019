@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ExternalProjectImportWizard">
+		<item key="WizardProjectsImportPage.STORE_NESTED_PROJECTS" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID" value="true"/>
+		<item key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED" value="false"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="G:\整合文件\springcloud-search"/>
+			<item value="C:\Users\admin\Desktop\乐购项目\User\easybuy-zuul"/>
+			<item value="C:\Users\admin\Desktop\乐购项目\easybuy-product"/>
+			<item value="C:\Users\admin\Desktop\乐购项目\easybuy-image"/>
+			<item value="C:\Users\admin\Desktop\User\easybuy-user"/>
+			<item value="C:\Users\admin\Desktop\User\easybuy-common-redis"/>
+			<item value="C:\Users\admin\Desktop\User\easybuy-common-resource"/>
+			<item value="C:\Users\admin\Desktop\User\easybuy-server"/>
+			<item value="C:\Users\admin\Desktop\User\easybuy-parent"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+	<section name="ResourceNavigator">
+		<item key="ResourceViewer.STORE_SORT_TYPE" value="1"/>
+		<item key="ResourceWorkingSetFilter.STORE_WORKING_SET" value="Aggregate for window 1571454887235"/>
+	</section>
+</section>

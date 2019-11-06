@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.huanletao.cart.mapper.CartMapper">
+
+	<select id="selectCartsByUserId" parameterType="String" resultType="Cart">
+		select * from t_cart where user_id=#{userId};
+	</select>
+	
+	<select id="selectExistByUserIdAndProductId" parameterType="Cart" resultType="Cart">
+		select * from t_cart where user_id=#{userId} and product_id=#{productId};
+	</select>
+	
+	<update id="updateCartNumByUserIdAndProductId" parameterType="Cart">
+		update t_cart set num=#{num}
+		where user_id=#{userId}
+		and product_id=#{productId}
+	</update>
+	
+	<insert id="insertCart" parameterType="Cart">
+		insert into t_cart(
+		user_id,
+		product_id,
+		product_price,
+		product_image,
+		product_name,
+		num) values(
+		#{userId},
+		#{productId},
+		#{productPrice},
+		#{productImage},
+		#{productName},
+		#{num}
+		)
+		
+	</insert>
+	
+	<delete id="deleteCartByUserIdAndProductId" parameterType="Cart">
+		delete from t_cart where user_id=#{userId} and 
+		<if>
+		 product_id=#{productId}
+		 </if>
+	</delete>
+	
+</mapper> 
+
+
+
+
+
+
+
+
+
+
+
+
+

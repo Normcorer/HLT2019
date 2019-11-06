@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.huanletao.common.pojo.User"/>
+<fullyQualifiedTypeName name="com.huanletao.common.utils.MapperUtil"/>
+<fullyQualifiedTypeName name="com.huanletao.common.vo.EasyUIResult"/>
+<fullyQualifiedTypeName name="com.huanletao.common.pojo.Product"/>
+<fullyQualifiedTypeName name="com.huanletao.common.pojo.YijiCatelog"/>
+<fullyQualifiedTypeName name="com.huanletao.common.vo.PicUploadResult"/>
+<fullyQualifiedTypeName name="com.huanletao.common.utils.UploadUtil"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="com.huanletao.mapper.ProductMapper"/>
+<fullyQualifiedTypeName name="com.huanletao.service.ProductService"/>
+<fullyQualifiedTypeName name="cn.huanletao.redis.config.JedisClusterConfig"/>
+<fullyQualifiedTypeName name="redis.clients.jedis.JedisCluster"/>
+<fullyQualifiedTypeName name="com.huanletao.common.vo.SysResult"/>
+</qualifiedTypeNameHistroy>

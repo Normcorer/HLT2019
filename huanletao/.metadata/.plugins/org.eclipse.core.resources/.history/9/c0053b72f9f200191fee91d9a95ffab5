@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.huanletao.mapper.ProductMapper">
+
+	<select id="queryProductCountByCate" parameterType="int" resultType="int">
+		select count(product_id) from  t_product 
+		<where>
+ 		<if test="fCatelog!=-1">f_catelog=#{fCatelog} </if>
+ 		<if test="sCatelog!=-1">and s_catelog=#{sCatelog}</if>
+ 		<if test="tCatelog!=-1">and t_catelog=#{tCatelog}</if>
+ 		and status =1
+ 		</where>
+	</select>
+ 	<select id="queryProductList" resultType="Product">
+ 		select * from t_product 
+ 		<where>
+ 		<if test="fCatelog!=-1">f_catelog=#{fCatelog} </if>
+ 		<if test="sCatelog!=-1">and s_catelog=#{sCatelog}</if>
+ 		<if test="tCatelog!=-1">and t_catelog=#{tCatelog}</if>
+ 		and status =1
+ 		</where>
+ 		limit #{start},#{rows};
+ 	</select>
+ 	
+ 	
+ 	<select id="queryAllProductCountByCate" parameterType="int" resultType="int">
+		select count(product_id) from  t_product 
+		<where>
+ 		<if test="fCatelog!=-1">f_catelog=#{fCatelog} </if>
+ 		<if test="sCatelog!=-1">and s_catelog=#{sCatelog}</if>
+ 		<if test="tCatelog!=-1">and t_catelog=#{tCatelog}</if>
+ 		</where>
+	</select>
+ 	
+ 	<select id="queryAllProductList" resultType="Product">
+ 		select * from t_product 
+ 		<where>
+ 		<if test="fCatelog!=-1">f_catelog=#{fCatelog} </if>
+ 		<if test="sCatelog!=-1">and s_catelog=#{sCatelog}</if>
+ 		<if test="tCatelog!=-1">and t_catelog=#{tCatelog}</if>
+ 		</where>
+ 		limit #{start},#{rows};
+ 	</select>
+
+ 	
+ 	
+ 	
+ 	
+ 	<select id="queryCate" resultType="YijiCatelog" >
+ 		select * from yiji_catelog
+ 	</select>
+ 	<select id="queryProductById" parameterType="String" resultType="Product">
+ 		select * from t_product where product_id=#{productId}
+ 	</select>
+ 	<insert id="insertProduct" parameterType="Product">
+ 		insert into t_product(
+		 product_id,
+		 product_name,
+		 product_price,
+		 sales,
+		 product_imgurl,
+		 product_num,
+		 product_description,
+		 f_catelog,
+		 s_catelog,
+		 t_catelog,
+		 product_rprice,
+		 status,
+		 start_time,
+		 end_time
+		) values (
+		 #{productId},
+		 #{productName},
+		 #{productPrice},
+		 0,
+		 #{productImgurl},
+		 #{productNum},
+		 #{productDescription},
+		 #{fCatelog},
+		 #{sCatelog},
+		 #{tCatelog},
+		 #{productRprice},
+		 #{status},
+		 #{startTime},
+		 #{endTime}
+		 );
+ 	</insert>
+ 	<update id="renewProduct" parameterType="Product">
+		update t_product set 
+		<if test="productName != null and productName !=''">product_name=	#{productName,jdbcType=VARCHAR},</if>
+		product_price=	#{productPrice},
+		product_rprice=	#{productRprice},
+		product_description=	#{productDescription},
+		product_imgurl=	#{productImgurl},
+		product_num=	#{productNum}
+		where product_id=	#{productId};
+	</update>
+	
+	<update id="onProduct" parameterType="Product">
+		update t_product set 
+		status       = 1
+		where product_id=#{productId};
+	</update>
+	<update id="offProduct" parameterType="Product">
+		update t_product set 
+		status       = 0
+		where product_id=#{productId};
+	</update>
+	
+	<update id="updateSales" >
+		update t_product set 
+		sales = sales + #{num},
+		product_num = product_num - #{num}
+		where product_id=#{productId};
+	</update>
+</mapper> 

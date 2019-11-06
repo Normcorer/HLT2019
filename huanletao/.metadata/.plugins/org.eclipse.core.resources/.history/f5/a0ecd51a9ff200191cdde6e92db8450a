@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.order.mapper.OrderMapper">
+	
+	<resultMap type="Order" id="orderRM">
+	<!-- order表格字段数据 id -->
+	<id property="orderId" column="order_id"/>
+	<!-- collection 封装对多关系 -->
+	<collection property="orderItems" 
+	javaType="ArrayList"
+	ofType="OrderItem" 
+	column="order_id" 
+	select="selectOrderItemByOrderId">
+	</collection>
+	</resultMap>
+	
+	<select id="selectOrdersByUserId" parameterType="String"
+	resultMap="orderRM">
+		select * from t_order where user_id=#{userId};
+	</select>
+	<select id="selectOrderItemByOrderId" parameterType="String"
+	resultType="OrderItem">
+		select * from t_order_item where order_id=#{orderId};
+	</select>
+	
+	<!-- mybatis 支持数据库mysql的多条insert 简写插入
+	mycat不支持mysql多条新增简写-->
+	<insert id="insertOrder" parameterType="Order">
+	<!-- 新增主表 -->
+	insert into t_order (
+	order_id,user_id,order_money,
+	order_paystate,order_time,order_receiverinfo)
+	values (
+	#{orderId},#{userId},#{orderMoney},
+	#{orderPaystate},#{orderTime},#{orderReceiverinfo});
+	<!-- 新增子表 foreach标签循环拼接insert语句-->
+	<!-- for(OrderItem item:orderItems) -->
+	<foreach collection="orderItems" item="item">
+	insert into t_order_item (
+	order_id,product_id,num,
+	product_name,product_price,product_image)
+	values (
+	#{orderId},#{item.productId},#{item.num},
+	#{item.productName},#{item.productPrice},
+	#{item.productImage});	
+	</foreach>
+	</insert>
+	<delete id="deleteOrderByOrderId" parameterType="String">
+		delete from t_order where order_id=#{orderId};
+		delete from t_order_item where order_id=#{orderId};
+	</delete>
+	<update id="updatePaystate" parameterType="String">
+		update t_order set order_paystate =1 where order_id=#{orderId};
+		
+	</update>
+	<select id="queryItemsById" parameterType="String" resultType="OrderItem" >
+		select * from t_order_item where order_id=#{orderId}
+	</select>
+	<select id="selectOrdersByUserId1" parameterType="String"
+	resultMap="orderRM">
+	select * from t_order where user_id=#{userId} where order_paystate = 0;
+	</select>
+</mapper> 
+
+
+
+
+
+
+
+
+
+
+
+

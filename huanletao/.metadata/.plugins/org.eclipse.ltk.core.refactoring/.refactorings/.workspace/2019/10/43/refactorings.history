@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;springcloud-search&apos; to &apos;huanletao-search&apos;" description="Rename resource &apos;springcloud-search&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/springcloud-search" name="huanletao-search" stamp="1571547791131" updateReferences="true"/>
+</session>

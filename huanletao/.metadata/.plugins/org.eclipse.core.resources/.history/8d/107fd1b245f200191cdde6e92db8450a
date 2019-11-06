@@ -1,0 +1,36 @@
+package com.huanletao.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.huanletao.common.pojo.Product;
+import com.huanletao.common.pojo.YijiCatelog;
+
+
+public interface ProductMapper {
+
+	int queryProductCountByCate(@Param("fCatelog")Integer fCatelog, @Param("sCatelog")Integer sCatelog, @Param("tCatelog")Integer tCatelog);
+
+	List<Product> queryProductList(@Param("fCatelog")Integer fCatelog, @Param("sCatelog")Integer sCatelog, @Param("tCatelog")Integer tCatelog, @Param("start")int start, @Param("rows")Integer rows);
+
+	Product queryProductById(String productId);
+
+	List<YijiCatelog> queryCate();
+
+	void insertProduct(Product product);
+
+	void renewProduct(Product product);
+
+	void onProduct(String productId);
+
+	void offProduct(String productId);
+
+	int queryAllProductCountByCate(@Param("fCatelog")Integer fCatelog, @Param("sCatelog")Integer sCatelog, @Param("tCatelog")Integer tCatelog);
+
+	List<Product> queryAllProductList(@Param("fCatelog")Integer fCatelog, @Param("sCatelog")Integer sCatelog, @Param("tCatelog")Integer tCatelog, @Param("start")int start, @Param("rows")Integer rows);
+
+	void updateSales(@Param("productId")String productId, @Param("num")Integer num);
+
+
+}

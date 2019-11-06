@@ -1,0 +1,340 @@
+package cn.huanletao.service;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
+import org.apache.ibatis.javassist.compiler.ast.NewExpr;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.huanletao.common.pojo.User;
+import com.huanletao.common.utils.CookieUtils;
+import com.huanletao.common.utils.DateUtil;
+import com.huanletao.common.utils.MapperUtil;
+import com.huanletao.common.utils.SmsUtil;
+import com.huanletao.common.utils.StringUtils;
+import com.huanletao.common.vo.EasyUIResult;
+import com.huanletao.common.vo.SysResult;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.netflix.ribbon.proxy.annotation.Var;
+
+import cn.huanletao.mapper.UserMapper;
+import cn.huanletao.redis.config.JdeisRedisConfig;
+import cn.huanletao.redis.config.JedisClusterConfig;
+import redis.clients.jedis.BitOP;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisCluster;
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.Pipeline;
+import redis.clients.jedis.params.sortedset.ZAddParams;
+@Service
+public class UserService {
+	@Autowired
+	UserMapper mapper;
+	@Autowired
+	private JedisCluster jedis; //存在redisCluster中
+	Map<String, String> msgCode=new HashMap<String, String>();//记录发送的验证码
+	public int checkUserName(String userName) {
+		return mapper.selectUserCountByUserName(userName);
+
+	}
+	
+	public int checkUserPhone(String userPhone) {
+		
+		return mapper.selectUserCountByUserPhone(userPhone);
+}
+	//获取验证码
+	public int getPhoneYANzhengma(String userPhone) {
+		
+		msgCode.put(userPhone,SmsUtil.getMsgCode());
+		System.out.println("要发送的验证码"+msgCode.get(userPhone));
+		return SmsUtil.sendYanZhengMa(userPhone, msgCode.get(userPhone));  //发送成功返回1失败返回0
+	
+	}
+	//判断注册是否成功
+	public int isRegisterSuccess(User user, String yanzhengma) {
+		if(msgCode.get(user.getUserPhone())==null) //没有存储到userPhone对象
+		{
+			return 3;
+		}
+		if(!msgCode.get(user.getUserPhone()).equals(yanzhengma))//用户输入的验证码和系统发送的验证码不一致
+		{
+			return 1;
+		}
+		else {
+			//获取到当前的时间做注册时间
+			Date registerTime=new Date(System.currentTimeMillis());
+			user.setRegisterTime(registerTime);
+			//补给一个userId
+			user.setUserId(UUID.randomUUID().toString());
+			user.setUserNickname(user.getUserName());//因为昵称我想的是先和用户名一致，后面登录后更改
+			mapper.insertRegisterUser(user);
+			if(	mapper.selectUserCountByUserName(user.getUserName())==0) //插入失败
+			{
+				return 2;
+			}
+		}
+		return 0;  //执行到最后代表插入成功返回0
+
+	}
+	//检查用户名和密码一致的用户是否存在
+	public User checkUsernameAndPassword(String userName, String userPassword) {
+		// TODO Auto-generated method stub
+		return mapper.selectUserCountByUsernameAndPassword(userName,userPassword);
+	}
+	//手机号登录
+	public int isPhoneLoginSuccess(String userPhone, String yanzhengma,HttpServletRequest req,HttpServletResponse res) {
+		System.out.println("登录的手机号"+userPhone+"验证码"+yanzhengma);
+		if(msgCode.get(userPhone)==null) //没有存储到userPhone对象
+		{
+			return 3;
+		}
+		else if(!msgCode.get(userPhone).equals(yanzhengma))//用户输入的验证码和系统发送的验证码不一致
+		{
+			return 1;
+		}
+		else { //验证码一致
+			//查看数据库是否有这个号码的数据
+		User user=mapper.selectUserByPhone(userPhone);
+			if(user==null)
+			{
+				return 2;//号码不存在
+			}
+			else   //用户存在
+			{
+				//将用户信息存放到redis上，返回的是一个String 类型的ticket 将它放置在Cookie中返回方便下次登录
+	            String ticket=loginInfoSaveInRedis(user);
+	            //判断失败和成功
+	            if("".equals(ticket)) {
+	                 //没有正确生成redis的key，说明登录失败
+	                 //return SysResult.build(201, "没有生成对应的登录ticket", null);
+	            	return 4;
+	            }else
+	            {
+	                 //正确存储了数据到redis并且登录成功
+	            	//更改最近登录时间
+	            	 Date lastLoginTime=new Date();
+	            	 mapper.setLastLoginTime(user.getUserId(),lastLoginTime);
+	                 //cookie存储一个值，EM_TICKET
+	            	
+	                 CookieUtils.setCookie(req,  res,"EASYBUY_TICKET",ticket);
+	                 return 0;
+	            }
+				
+			}	
+			
+		}
+		
+	}
+public	void setLastLoginTime(String userId,Date lastLoginTime)
+{
+	mapper.setLastLoginTime(userId, lastLoginTime);
+}
+//将用户的信息存放在redis上实现 登录的顶替
+	public String loginInfoSaveInRedis(User exist) {
+		//准备2个key值,userLoginLock ticket
+		String userLoginLock=
+				"user_login_"+exist.getUserId()+".lock"; //这个是对用户的uid加上锁
+		String ticket=
+				"EASYBUY_TICKET"+System.currentTimeMillis()+exist.getUserId();
+		//判断
+		if(jedis.exists(userLoginLock)){
+			//说明曾经有人登录过,而且没超时
+			String oldTicket=jedis.get(userLoginLock);//拿到userLoginLock的value
+			jedis.del(oldTicket);
+		}//不存在顶替中的lock,说明是第一次登录
+		jedis.setex(userLoginLock, 60*30, ticket);//存放时间为30分钟，超出
+		//ticket userJson一致,并且开始存储这对key-value
+		try{
+			String userJson=MapperUtil.MP.writeValueAsString(exist);
+			jedis.setex(ticket, 60*30, userJson);
+			return ticket;
+		}catch(Exception e){
+			e.printStackTrace();
+			return "";}
+	}
+	//
+	public String queryUserJson(String ticket) {
+		try{
+		//判断超时时间剩余值
+		Long leftTime=jedis.pttl(ticket);
+		String userJson=jedis.get(ticket); //过期就是null
+		User user=MapperUtil.MP.readValue(userJson, User.class);//json对象转成对象
+		Long leaseTime=1000*60*10l;
+		if(leftTime<=leaseTime){//达到续租的条件
+		//将剩余时间加上5分钟,做续租
+		leftTime=leftTime+1000*60*20l;
+		//做expire 对ticket和userLoginLock
+		jedis.pexpire(ticket, leftTime);
+		jedis.pexpire("user_login_"
+		+user.getUserId()+".lock", leftTime);
+		}
+		return userJson;
+		}catch(Exception e){
+		e.printStackTrace();
+		return null;
+		}
+		}
+
+	public int outLogin(String ticket) {
+		
+		try {
+			String userJson=jedis.get(ticket); //过期就是null
+			User user=MapperUtil.MP.readValue(userJson, User.class);
+			//先删除ticket 
+			jedis.del(ticket);
+			//后组装出 userlog的key删除
+			jedis.del("user_login_"+user.getUserId()+".lock");	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+		
+			e.printStackTrace();
+			return 1;
+		} 
+		return 0;
+	}
+
+//用户登录统计 -----------------------------------------------------------
+JdeisRedisConfig j=new JdeisRedisConfig();
+Jedis jedis_redis=j.jedis;
+
+	/**
+     * 更新累计和日均活跃用户人数
+     * @param userId 用户id
+     * @param time 当前日期
+     */
+    public void updateUser(long userId, String time) {
+        if (time=="") {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+            time = sdf.format(new Date());
+        }
+        Pipeline pipeline = jedis_redis.pipelined();
+        pipeline.setbit(JdeisRedisConfig.TOTAL_KEY, userId, true); //这里的userId就是这个key中存放的数据自增的个数
+        pipeline.setbit(JdeisRedisConfig.ACTIVE_KEY + time, userId, true);
+        pipeline.syncAndReturnAll();
+    }
+    /**
+     * 获取累计用户人数
+     * @return 累计用户人数
+     */
+    public Long getTotalUserCount() {
+        Pipeline pipeline = jedis_redis.pipelined(); //获取一个管道
+        pipeline.bitcount(JdeisRedisConfig.TOTAL_KEY); //统计某个键的有多少位上的值是1，也就是统计总的登录数
+        List<Object> totalKeyCountList = pipeline.syncAndReturnAll(); //执行并返回结果
+        return (Long) totalKeyCountList.get(0);
+
+    }
+    /**
+     * 获取指定天数内的都登录的人数
+     * @param dayNum 指定天数
+     * @return
+     */
+    public Long getActiveUserCount(int dayNum) {
+        if (dayNum < 1) {
+            return (long) 0;
+        }
+        List<String> pastDaysKey = new ArrayList<String>();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < dayNum; i++) {
+            //保存距今dayNum天数的key的集合
+            sb.append(JdeisRedisConfig.ACTIVE_KEY).append(sdf.format(DateUtil.addDays(new Date(), -i)));
+            pastDaysKey.add(sb.toString()); //将要查找的key值存在集合中
+            sb.delete(0, sb.length()); //清空stringbuilder
+        }
+        if (pastDaysKey.isEmpty()) {
+            return (long) 0;
+        }
+        String lastDaysKey = "last" + dayNum + "DaysActive"; //存放最终与结果的值
+        Pipeline pipeline = jedis_redis.pipelined();
+        pipeline.bitop(BitOP.AND, lastDaysKey, pastDaysKey.toArray(new String[pastDaysKey.size()]));
+        /*
+         * 作用：对多个键进行位运算
+
+      (2)用法：bitop operation destkey key key1 [key2]
+
+     (3)参数说明：
+
+     operation表示位算符，有AND,OR,NOT,XOR
+     destkey 表示最终保存结果的键
+     key key1 key2等表示用于运算的键
+         */
+        pipeline.bitcount(lastDaysKey); // 统计某个键的有多少位上的值是1 就是统计连续登录的人数
+        //设置过期时间为5分钟
+        pipeline.expire(lastDaysKey, 300);
+        List<Object> activeKeyCountList = pipeline.syncAndReturnAll();
+        return (Long) activeKeyCountList.get(1);
+    }
+  /**
+   *    获取指定日期登录的人数
+   * @param date
+   * @return
+   */
+    public Long getActiveInOneDayCount(String time) //yyyyMMdd
+    {
+   	    Pipeline pipeline = jedis_redis.pipelined();
+           pipeline.bitcount(JdeisRedisConfig.ACTIVE_KEY + time);
+          List<Object> list= pipeline.syncAndReturnAll();
+         return (Long)list.get(0);
+    }
+    //返回的是解析redis返回的字符串，然后解析成二进制去数据库查询数据
+     public String getActiveInOneDay(String time) //yyyyMMdd
+     {
+    	    Pipeline pipeline = jedis_redis.pipelined();
+            pipeline.get(JdeisRedisConfig.ACTIVE_KEY + time);
+           List<Object> list= pipeline.syncAndReturnAll();
+          return StringUtils.StringToBarry( (String)list.get(0));
+     }
+   
+     //二进制字符长度转成int数组去到数据库查询数据
+     public List<User> getUserByIDs(String barry) {
+    	 //String 的二进制转成int[] 数组的下标值记录 而数组中的值就是我们用于数据库查询的ID
+    	
+    	 char[] b=barry.toCharArray();
+    	 List a=new ArrayList<Integer>();
+
+    	 for(int i=0;i<b.length;i++)
+    	 {
+    		 if(b[i]=='1')
+    		 {
+    		  a.add(i);	
+    		 
+    		 }
+  	     }
+	 
+    return	mapper.getUserByIDS(a);
+    	 
+     }
+
+	public String getActiveUserByDay(int dayNum) {
+		 Pipeline pipeline = jedis_redis.pipelined();
+         pipeline.get("last" + dayNum + "DaysActive");
+        List<Object> list= pipeline.syncAndReturnAll();
+       return StringUtils.StringToBarry( (String)list.get(0));
+
+	}
+
+	public EasyUIResult queryUserByPage(Integer page, Integer rows) {
+		//准备EasyUIResult
+		EasyUIResult result=new EasyUIResult();
+		//total
+		int total=mapper.selectUserCounts();
+		result.setTotal(total);
+		//rows List<Product>对象
+		int start=(page-1)*rows;
+		List<User> uList=mapper.selectUserList(start,rows);
+		result.setRows(uList);
+		return result;
+	}
+
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="getActiveInOneDay"/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="getActiveInOneDay"/>
+			<item value="updateUser"/>
+			<item value="user/updateUser"/>
+			<item value="Mp"/>
+			<item value="Mapper"/>
+			<item value="queryUserJson"/>
+			<item value="com.easybuy"/>
+			<item value="cn.easybuy"/>
+			<item value="import com.easybuy.common.utils.CookieUtils;"/>
+			<item value="import com.easybuy.common.pojo.User;"/>
+		</list>
+		<list key="replacehistory">
+			<item value="com.huanletao"/>
+			<item value="cn.huanletao"/>
+			<item value="import com.huanletao.common.pojo.User;"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="1208"/>
+		<item key="DIALOG_Y_ORIGIN" value="422"/>
+		<item key="DIALOG_WIDTH" value="356"/>
+		<item key="DIALOG_HEIGHT" value="454"/>
+		<item key="DIALOG_FONT_NAME" value="1|Microsoft YaHei UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft YaHei UI"/>
+	</section>
+</section>
