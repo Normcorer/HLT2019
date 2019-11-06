@@ -1,0 +1,547 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" href="css/slide.css" />
+		 <link rel="icon" href="images/assets/img/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="css/FTBwebbase.css" />
+    <link rel="stylesheet" type="text/css" href="css/FTBpages-seckillOrder.css" />
+	</head>
+
+	<body>
+		<div class="top_banner">
+			<div class="module w1200">
+				<a href="javascript:">
+					<img src="images/active.jpg" />
+					<i class="icon-close"><img src="images/close.png"/></i>
+				</a>
+			</div>
+		</div>
+		<div class="site-nav" id="site-nav">
+			<div class="w w1200">
+				<div class="fl">
+					<div class="city-choice" id="city-choice" data-ectype="dorpdown">
+						<div class="dsc-choie dsc-cm" ectype="dsc-choie">
+							<img src="images/place.png" class="place" />
+							<input type="text" value="北京" class="search" />
+						</div>
+
+					</div>
+					<div class="txt-info" id="ECS_MEMBERZONE">
+						<a href="#" class="link-login red">请登录</a>
+						<a href="#" class="link-regist">免费注册</a>
+					</div>
+				</div>
+				<ul class="quick-menu fr">
+					<li>
+						<div class="dt">
+							<a href="dingdan4.html">我的订单</a>
+						</div>
+					</li>
+					<li class="spacer"></li>
+					<li>
+						<div class="dt">
+							<a href="#">我的浏览</a>
+						</div>
+					</li>
+					<li class="spacer"></li>
+					<li>
+						<div class="dt">
+							<a href="#">我的收藏</a>
+						</div>
+					</li>
+					<li class="spacer"></li>
+					<li>
+						<div class="dt">
+							<a href="#">客户服务</a>
+						</div>
+					</li>
+					<li class="spacer"></li>
+					<li class="li_dorpdown" data-ectype="dorpdown">
+						<div class="dt dsc-cm">网站导航</div>
+						<div class="dd dorpdown-layer" style="z-index: 10000000;">
+							<dl class="fore1">
+								<dt>特色主题</dt>
+								<dd>
+									<div class="item">
+										<a href="#" target="_blank">家用电器</a>
+									</div>
+									<div class="item">
+										<a href="#" target="_blank">手机数码</a>
+									</div>
+									<div class="item">
+										<a href="#" target="_blank">电脑办公</a>
+									</div>
+								</dd>
+							</dl>
+							<dl class="fore2">
+								<dt>促销活动</dt>
+								<dd>
+									<div class="item">
+										<a href="#">拍卖活动</a>
+									</div>
+									<div class="item">
+										<a href="#">共创商品</a>
+									</div>
+									<div class="item">
+										<a href="#">优惠活动</a>
+									</div>
+									<div class="item">
+										<a href="#">批发市场</a>
+									</div>
+									<div class="item">
+										<a href="#">超值礼包</a>
+									</div>
+									<div class="item">
+										<a href="#">优惠券</a>
+									</div>
+								</dd>
+							</dl>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="header">
+			<div class="header_container">
+				<div class="logo fl">
+					<img src="images/logo.png" />
+					<a href="#"><img src="images/ecsc-join.gif" /></a>
+				</div>
+				<div class="dsc-search">
+					<div class="form">
+						<form class="search-form">
+							<input name="keywords" type="text" id="keyword" value="" class="search-text" style="color: rgb(153, 153, 153);">
+							<button type="submit" class="button button-goods">搜商品</button>
+							<button type="submit" class="button button-store">搜店铺</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="nav" ectype="dscNav">
+			<div class="w w1200">
+				<div class="categorys ">
+					<div class="categorys-type">
+						<a href="#" target="_blank">全部商品分类</a>
+					</div>
+				</div>
+				<div class="nav-main" id="nav">
+					<ul class="navitems">
+						<li>
+							<a href="#" class="curr">首页</a>
+						</li>
+						<li>
+							<a href="#">食品特产</a>
+						</li>
+						<li>
+							<a href="#">服装城</a>
+						</li>
+						<li>
+							<a href="#">大家电</a>
+						</li>
+						<li>
+							<a href="#">鞋靴箱包</a>
+						</li>
+						<li>
+							<a href="#">品牌专区</a>
+						</li>
+						<li>
+							<a href="#">聚划算</a>
+						</li>
+						<li>
+							<a href="#">积分商城</a>
+						</li>
+						<li>
+							<a href="#">预售</a>
+						</li>
+						<li>
+							<a href="#">店铺街</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<!--zj-->
+		
+ <!--右侧主内容-->
+                <div class="yui3-u-5-6 order-pay" >
+                    <div class="body">
+                        <div class="table-title">
+                            <table class="sui-table  order-table">
+                                <tr>
+                                    <thead>
+                                        <th width="35%">宝贝</th>
+                                        <th width="5%">单价</th>
+                                        <th width="5%">数量</th>
+                                        <th width="8%">商品操作</th>
+                                        <th width="10%">实付款</th>
+                                        <th width="10%">交易状态</th>
+                                        <th width="10%">交易操作</th>
+                                    </thead>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="order-detail">
+                            <div class="orders">
+                                <div class="choose-order">
+                                    <div class="sui-pagination pagination-large top-pages">
+                                        <ul>
+                                            <li class="prev disabled"><a href="#">上一页</a></li>
+
+                                            <li class="next"><a href="#">下一页</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!--order1-->
+                                <div class="choose-title">
+                                    <label data-toggle="checkbox" class="checkbox-pretty ">
+                                           <input type="checkbox" checked="checked"><span>2017-02-11 11:59　订单编号：7867473872181848  店铺：哇哈哈 <a>和我联系</a></span>
+                                     </label>
+                                    <a class="sui-btn btn-info share-btn">删除订单</a> <a class="sui-btn btn-info share-btn">分享</a> 
+                                </div>
+                                <table class="sui-table table-bordered order-datatable">
+                                    <tbody>
+                                        <tr>
+                                            <td width="35%">
+                                                <div class="typographic"><img src="images/goods.png" />
+                                                    <a href="#" class="block-text">包邮 正品玛姬儿压缩面膜无纺布纸膜100粒 送泡瓶面膜刷喷瓶 新款</a>
+                                                    <span class="guige">规格：温泉喷雾150ml</span>
+                                                </div>
+                                            </td>
+                                            <td width="5%" class="center">
+                                                <ul class="unstyled">
+                                                    <li class="o-price">¥599.00</li>
+                                                    <li>¥299.00</li>
+                                                </ul>
+                                            </td>
+                                            <td width="5%" class="center">1</td>
+                                            <td width="8%" class="center">
+                                                <ul class="unstyled">
+                                                    <li><a>申请售后</a></li>
+                                                </ul>
+                                            </td>
+                                            <td width="10%" class="center">
+                                                <ul class="unstyled">
+                                                    <li>¥299.00</li>
+                                                    <li>（含运费：￥0.00）</li>
+                                                </ul>
+                                            </td>
+                                            <td width="10%" class="center">
+                                                <ul class="unstyled">
+                                                    <li>交易成功</li>                                                  
+                                                    <li><a href="orderDetail.html" class="btn">订单详情 </a></li>
+                                                </ul>
+                                            </td>
+                                            <td width="10%" class="center">
+                                                <ul class="unstyled">
+                                                    <li><a href="#" class="sui-btn btn-info">评价</a></li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <!--order2-->
+                                <div class="choose-title">
+                                    <label data-toggle="checkbox" class="checkbox-pretty ">
+                                           <input type="checkbox" checked="checked"><span>2017-02-11 11:59　订单编号：7867473872181848  店铺：哇哈哈 <a>和我联系</a></span>
+                                     </label>
+                                   <a class="sui-btn btn-info share-btn">删除订单</a> <a class="sui-btn btn-info share-btn">分享</a>
+                                </div>
+                                <table class="sui-table table-bordered order-datatable">
+                                    <tbody>
+                                        <tr>
+                                            <td width="35%">
+                                                <div class="typographic"><img src="images/goods.png" />
+                                                    <a href="#" class="block-text">包邮 正品玛姬儿压缩面膜无纺布纸膜100粒 送泡瓶面膜刷喷瓶 新款</a>
+                                                    <span class="guige">规格：温泉喷雾150ml</span>
+                                                </div>
+                                            </td>
+                                            <td width="5%" class="center">
+                                                <ul class="unstyled">
+                                                    <li class="o-price">¥599.00</li>
+                                                    <li>¥299.00</li>
+                                                </ul>
+                                            </td>
+                                            <td width="5%" class="center">1</td>
+                                            <td width="8%" class="center">
+                                                <ul class="unstyled">
+                                                    <li><a>申请售后</a></li>
+                                                </ul>
+                                            </td>
+                                            <td width="10%" class="center">
+                                                <ul class="unstyled">
+                                                    <li>¥299.00</li>
+                                                    <li>（含运费：￥0.00）</li>
+                                                </ul>
+                                            </td>
+                                            <td width="10%" class="center">
+                                                <ul class="unstyled">
+                                                    <li>交易成功</li>                                                  
+                                                    <li><a href="orderDetail.html" class="btn">订单详情 </a></li>
+                                                </ul>
+                                            </td>
+                                            <td width="10%" class="center">
+                                                <ul class="unstyled">
+                                                    <li><a href="#" class="sui-btn btn-info">评价</a></li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="choose-order">
+
+                                <div class="sui-pagination pagination-large top-pages">
+                                    <ul>
+                                        <li class="prev disabled"><a href="#">«上一页</a></li>
+                                        <li class="active"><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li class="dotted"><span>...</span></li>
+                                        <li class="next"><a href="#">下一页»</a></li>
+                                    </ul>
+                                    <div><span>共10页&nbsp;</span><span>
+                                            到
+                                            <input type="text" class="page-num"><button class="page-confirm" onclick="alert(1)">确定</button>
+                                            页</span></div> <div class="xm-plain-box">
+              
+             
+            <div class="box-ft clearfix">
+              
+                    <a href="index.html" class="page-confirm">返回首页</a>
+
+                </div>
+            </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="like-title">
+                            <div class="mt">
+                                <span class="fl"><strong>热卖单品</strong></span>
+                            </div>
+                        </div>
+                        <div class="like-list">
+                            <ul class="yui3-g">
+                                <li class="yui3-u-1-4">
+                                    <div class="list-wrap">
+                                        <div class="p-img">
+                                            <img src="images/_/itemlike01.png" />
+                                        </div>
+                                        <div class="attr">
+                                            <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
+                                        </div>
+                                        <div class="price">
+                                            <strong>
+											<em>¥</em>
+											<i>3699.00</i>
+										</strong>
+                                        </div>
+                                        <div class="commit">
+                                            <i class="command">已有6人评价</i>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="yui3-u-1-4">
+                                    <div class="list-wrap">
+                                        <div class="p-img">
+                                            <img src="images/_/itemlike02.png" />
+                                        </div>
+                                        <div class="attr">
+                                            <em>Apple苹果iPhone 6s/6s Plus 16G 64G 128G</em>
+                                        </div>
+                                        <div class="price">
+                                            <strong>
+											<em>¥</em>
+											<i>4388.00</i>
+										</strong>
+                                        </div>
+                                        <div class="commit">
+                                            <i class="command">已有700人评价</i>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="yui3-u-1-4">
+                                    <div class="list-wrap">
+                                        <div class="p-img">
+                                            <img src="images/_/itemlike03.png" />
+                                        </div>
+                                        <div class="attr">
+                                            <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
+                                        </div>
+                                        <div class="price">
+                                            <strong>
+											<em>¥</em>
+											<i>4088.00</i>
+										</strong>
+                                        </div>
+                                        <div class="commit">
+                                            <i class="command">已有700人评价</i>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="yui3-u-1-4">
+                                    <div class="list-wrap">
+                                        <div class="p-img">
+                                            <img src="images/_/itemlike04.png" />
+                                        </div>
+                                        <div class="attr">
+                                            <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
+                                        </div>
+                                        <div class="price">
+                                            <strong>
+											<em>¥</em>
+											<i>4088.00</i>
+										</strong>
+                                        </div>
+                                        <div class="commit">
+                                            <i class="command">已有700人评价</i>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+		<!--zj-->
+		
+		<div class="w1200_container">
+	
+		</div>
+		<!--底部-->
+		<div class="footer_con">
+			<div class="fnc_container">
+				<div class="help-list">
+					<div class="help-item">
+						<h3>新手上路 </h3>
+						<ul>
+							<li>
+								<a href="#" title="售后流程" target="_blank">售后流程</a>
+							</li>
+							<li>
+								<a href="#" title="购物流程" target="_blank">购物流程</a>
+							</li>
+							<li>
+								<a href="#" title="订购方式" target="_blank">订购方式</a>
+							</li>
+						</ul>
+
+					</div>
+					<div class="help-item">
+						<h3>配送与支付 </h3>
+						<ul>
+							<li>
+								<a href="#" title="货到付款区域" target="_blank">货到付款区域</a>
+							</li>
+							<li>
+								<a href="#" title="配送支付智能查询 " target="_blank">配送支付智能查询</a>
+							</li>
+							<li>
+								<a href="#" title="支付方式说明" target="_blank">支付方式说明</a>
+							</li>
+						</ul>
+
+					</div>
+					<div class="help-item">
+						<h3>会员中心</h3>
+						<ul>
+							<li>
+								<a href="#" title="资金管理" target="_blank">资金管理</a>
+							</li>
+							<li>
+								<a href="#" title="我的收藏" target="_blank">我的收藏</a>
+							</li>
+							<li>
+								<a href="#" title="我的订单" target="_blank">我的订单</a>
+							</li>
+						</ul>
+
+					</div>
+					<div class="help-item">
+						<h3>服务保证 </h3>
+						<ul>
+							<li>
+								<a href="#" title="退换货原则" target="_blank">退换货原则</a>
+							</li>
+							<li>
+								<a href="#" title="售后服务保证" target="_blank">售后服务保证</a>
+							</li>
+							<li>
+								<a href="#" title="产品质量保证 " target="_blank">产品质量保证</a>
+							</li>
+						</ul>
+
+					</div>
+					<div class="help-item">
+						<h3>联系我们 </h3>
+						<ul>
+							<li>
+								<a href="#" title="网站故障报告" target="_blank">网站故障报告</a>
+							</li>
+							<li>
+								<a href="#" title="选机咨询 " target="_blank">选机咨询</a>
+							</li>
+							<li>
+								<a href="#" title="投诉与建议 " target="_blank">投诉与建议</a>
+							</li>
+						</ul>
+					</div>
+					<div class="help-item">
+						<h3>关注我们 </h3>
+						<img src='images/erweima.png' />
+					</div>
+
+				</div>
+			</div>
+		</div>
+		
+	</body>
+	
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/kuCity.js"></script>
+	<script type="text/javascript" src="js/jquery.SuperSlide.js"></script>
+	<script type="text/javascript" src="js/slide.js"></script>
+	<script>
+		$('.li_dorpdown').hover(function() {
+			$('.dorpdown-layer').show();
+		});
+		$('.li_dorpdown').mouseleave(function() {
+			$('.dorpdown-layer').hide();
+		});
+		$('.icon-close').click(function() {
+			$('.top_banner').hide();
+		});
+		$('.my_center_box_left a').hover(function() {
+
+		});
+		$('.cate-layer-right-slide img').mouseenter(function() {
+
+			$(this).delay('300').animate(300);
+		});
+		$('.cate-layer-right-slide img').mouseleave(function() {
+			$(this).css('border', 'none')
+		});
+		$()
+	</script>
+	<script>
+		$('.search').kuCity();
+		
+	</script>
+
+
+
+</html>

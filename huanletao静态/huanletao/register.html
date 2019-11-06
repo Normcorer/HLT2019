@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<title>注册</title>
+				<style type="text/css">
+	 			
+  .getregiter_phone_yzm{
+   cursor: pointer;
+	position: absolute;
+	margin-top: 26px;
+	margin-left: 0px;
+	width: 110px;
+	height: 44px;
+	border: none;
+	background: #f2f2f2;
+	color: #333;
+	padding: 0;
+			}
+			a {
+				display: inline-block;
+				text-align: right;
+				width: 70px;
+			}
+	
+			.user span{
+				margin: auto;
+				width:200px ;display: inline-block;
+	text-align: right;}
+	
+			</style>
+	
+	</head>
+
+	<body>
+		<div class="register_header">
+			<div class="reg_hc">
+				<img src="images/logo.png" />
+				<h4>欢迎注册</h4>	
+	<span class="forget fr"><a href="login.html">登录</a></span>
+	
+			</div>
+		</div>
+		<div class="register_con">
+			<div class="register_conr">
+				<div class="register">
+					<h5 class="personal active1">个人注册</h5>
+					<!--<h6 class="business cancel">商户注册</h6>-->
+				</div>
+				<div class="clear"></div>
+				<div class="user per_register">
+					<form  id="gr_register_form" >
+					<a>用户名：</a>
+					<img src="images/user.png" class="psw" style="margin-top: 10px;" />
+					<input type="text" name="username" id="register_username" class="input_comm" placeholder="请输入用户名" style="margin-top: 0px;">
+					<span></span> 
+					<br />
+					<a>密码：</a>
+					<img src="images/password.png" class="psw" />
+					<input type="password" name="password" id="register_password" class="input_comm" placeholder="请至少使用两种字符组合" />
+					<span></span>
+					<br />
+					<a>确认密码：</a>
+					<img src="images/password.png" class="psw" />
+					<input type="password" name="password2" id="register_password2" class="input_comm" placeholder="请确认密码" />
+					<span></span>
+					<br />
+					<a>邮箱：</a>
+					<img src="images/email.png" class="psw"  />
+					<input type="email" name="email" class="input_comm" placeholder="请输入邮箱" />
+					<span></span>
+			<!--<button class="quire_yzm">获取验证码</button>-->
+					<br />
+					<a>手机号：</a>
+					<img src="images/phone.png" class="psw" />
+					<input type="text" name="phone" id="register_phone" class="input_comm" placeholder="手机号" />
+					<span></span>
+					<br />
+			
+					<a>验证码：</a>
+					<input type="text" name="register_yanzhengma" class="yanzhengma" id="register_yanzhengma" placeholder="请输入验证码" />
+	
+					<button class="getregiter_phone_yzm" type="button" id="register_get_yanzhengma">获取手机验证码</button>
+					<br/>
+					<span></span>
+					<div class="clear"></div>
+					<!--<input type="checkbox" name="jizhu" value="记住账号和密码" class="bark"/><span class="bark1">记住账号和密码</span>
+						<span class="forget fr"><a href="#">忘记密码</a></span>-->
+					<input type="button" id="register_gr" name="register_gr" value="注   册" class="btn_register" />
+				    </form>
+				</div>
+				<!--商户注册-->
+				<!--<div class="user business_register">
+					<form id="sh_register_form"  action="www.lalal.com" onsubmit="return formObj.checkFormForCartAcount()">
+					<a>商店名称：</a>
+					<img src="images/business.png" class="psw" style="margin-top: 10px;" />
+					<input type="text" name="storename" id="storename" class="input_comm" placeholder="请输商店名称" style="margin-top: 0px;">
+					<span></span>
+					<br />
+					<a>密码：</a>
+					<img src="images/password.png" class="psw" />
+					<input type="password" name="password" id="password" class="input_comm" placeholder="请输入密码" />
+					<span></span>
+					<br />
+					<a>确认密码：</a>
+					<img src="images/password.png" class="psw" />
+					<input type="password" name="password2" id="password2" class="input_comm" placeholder="请确认密码" />
+				    <span></span>
+					<br />
+					<a>手机号：</a>
+					<img src="images/phone.png" class="psw" />
+					<input type="text" name="phone" id="phone" class="input_comm" placeholder="手机号" />
+					<span></span>
+					<br />
+					<a>邮箱：</a>
+					<img src="images/email.png" class="psw" />
+					<input type="text" name="yanzhengma" class="input_comm" placeholder="请输入邮箱" />
+					<span></span>
+					<br />
+					<a>城市：</a>
+					<img src="images/place2.png" class="psw" />
+					<input type="text" placeholder="请输入或选择商铺所在城市" class="input_comm search" />
+					<span></span>
+					<br />
+					<a>验证码：</a>
+					<input type="text" name="yanzhengma" class="yanzhengma" placeholder="请输入手机验证码" />
+					<button class="getregiter_phone_yzm" type="button">获取手机验证码</button>
+					<br/>
+					<span></span>
+					<div class="clear"></div>
+				
+		
+					<input type="submit"  id="register_sh" name="register_sh" value="注   册" class="btn_register"/>
+				</form>
+				</div>
+				-->
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+	</body>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/login_register.js"></script>
+	<script src="js/kuCity.js"></script>
+	<script>
+		 
+		$('.business').click(function() {
+			//解决相互校验的问题
+			 var aSpan=document.getElementsByTagName('span');
+			    for(var i=0;i<aSpan.length;i++)
+			    {
+			      aSpan[i].innerHTML="";
+			    } 
+			$('.business_register').show();
+			$('.per_register').hide();
+			$(this).addClass('active1').removeClass('cancel');
+			$('.personal').addClass('cancel').removeClass('active1');
+		});
+		$('.personal').click(function() {
+			var aSpan=document.getElementsByTagName('span');
+			  for(var i=0;i<aSpan.length;i++)
+		    {
+		      aSpan[i].innerHTML="";
+		    } 
+			$('.business_register').hide();
+			$('.per_register').show();
+			$(".business").addClass('cancel').removeClass('active1');
+			$(this).addClass('active1').removeClass('cancel');
+		});
+	     
+	</script>
+	<script>
+		$('.search').kuCity();
+	</script>
+</html>

@@ -1,0 +1,486 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" href="css/slide.css" />
+		<link href="css/FTBpublic.css" type="text/css" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="css/FTBbase.css"/>
+        <script type="text/javascript" src="js/FTBjquery_cart.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/FTBbuyConfirm.css" />
+	</head>
+
+	<body>
+		<div class="top_banner">
+			<div class="module w1200">
+				<a href="javascript:">
+					<img src="images/active.jpg" />
+					<i class="icon-close"><img src="images/close.png"/></i>
+				</a>
+			</div>
+		</div>
+		<div class="site-nav" id="site-nav">
+			<div class="w w1200">
+				<div class="fl">
+					<div class="city-choice" id="city-choice" data-ectype="dorpdown">
+						<div class="dsc-choie dsc-cm" ectype="dsc-choie">
+							<img src="images/place.png" class="place" />
+							<input type="text" value="北京" class="search" />
+						</div>
+
+					</div>
+					<div class="txt-info" id="ECS_MEMBERZONE">
+						<a href="#" class="link-login red">请登录</a>
+						<a href="#" class="link-regist">免费注册</a>
+					</div>
+				</div>
+				<ul class="quick-menu fr">
+					<li>
+						<div class="dt">
+							<a href="dingdan4.html">我的订单</a>
+						</div>
+					</li>
+				<li class="spacer"></li>
+					<li>
+						<div class="dt">
+							<a href="./ecart.html">我的购物车</a>
+						</div>
+					</li>
+					<li class="spacer"></li>
+					<li>
+						<div class="dt">
+							<a href="#">我的收藏</a>
+						</div>
+					</li>
+					<li class="spacer"></li>
+					<li>
+						<div class="dt">
+							<a href="#">客户服务</a>
+						</div>
+					</li>
+					<li class="spacer"></li>
+					<li class="li_dorpdown" data-ectype="dorpdown">
+						<div class="dt dsc-cm">网站导航</div>
+						<div class="dd dorpdown-layer" style="z-index: 10000000;">
+							<dl class="fore1">
+								<dt>特色主题</dt>
+								<dd>
+									<div class="item">
+										<a href="#" target="_blank">家用电器</a>
+									</div>
+									<div class="item">
+										<a href="#" target="_blank">手机数码</a>
+									</div>
+									<div class="item">
+										<a href="#" target="_blank">电脑办公</a>
+									</div>
+								</dd>
+							</dl>
+							<dl class="fore2">
+								<dt>促销活动</dt>
+								<dd>
+									<div class="item">
+										<a href="#">拍卖活动</a>
+									</div>
+									<div class="item">
+										<a href="#">共创商品</a>
+									</div>
+									<div class="item">
+										<a href="#">优惠活动</a>
+									</div>
+									<div class="item">
+										<a href="#">批发市场</a>
+									</div>
+									<div class="item">
+										<a href="#">超值礼包</a>
+									</div>
+									<div class="item">
+										<a href="#">优惠券</a>
+									</div>
+								</dd>
+							</dl>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="header">
+			<div class="header_container">
+				<div class="logo fl">
+					<img src="images/logo.png" />
+					<a href="#"><img src="images/ecsc-join.gif" /></a>
+				</div>
+				<div class="dsc-search">
+					<div class="form">
+						<form class="search-form">
+							<input name="keywords" type="text" id="keyword" value="" class="search-text" style="color: rgb(153, 153, 153);">
+							<button type="submit" class="button button-goods">搜商品</button>
+							<button type="submit" class="button button-store">搜店铺</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="nav" ectype="dscNav">
+			<div class="w w1200">
+				<div class="categorys ">
+					<div class="categorys-type">
+						<a href="#" target="_blank">全部商品分类</a>
+					</div>
+				</div>
+				<div class="nav-main" id="nav">
+					<ul class="navitems">
+						<li>
+							<a href="#" class="curr">首页</a>
+						</li>
+						<li>
+							<a href="#">食品特产</a>
+						</li>
+						<li>
+							<a href="#">服装城</a>
+						</li>
+						<li>
+							<a href="#">大家电</a>
+						</li>
+						<li>
+							<a href="#">鞋靴箱包</a>
+						</li>
+						<li>
+							<a href="#">品牌专区</a>
+						</li>
+						<li>
+							<a href="#">聚划算</a>
+						</li>
+						<li>
+							<a href="#">积分商城</a>
+						</li>
+						<li>
+							<a href="#">预售</a>
+						</li>
+						<li>
+							<a href="#">店铺街</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<!--FTB代码添加位置-->
+		<!--订单提交body部分开始-->  
+
+
+<div class="border_top_cart">
+
+        <div class="container payment-con">
+    <form  target="_blank" action="dingdan2.html" id="pay-form" method="post">
+            <div class="order-info">
+                <div class="msg">
+                    <h3>您的订单已提交成功！付款咯～</h3>
+                    <p></p>
+                    
+                                                                    <p class="post-date">成功付款后，7天发货</p>
+                                    </div>
+                <div class="info">
+                    <p>
+                        金额：<span class="pay-total">49.00元</span>
+                    </p>
+                    <p>
+                        订单：1150505740045173                    </p>
+                    <p>
+                        配送：潘骏杰                                    <span class="line">/</span>
+                                    159****6437                                    <span class="line">/</span>
+                                    江苏,无锡市,北塘区 民丰西苑82号202室                                                                <span class="line">/</span>
+                                                                    不限送货时间                                    <span class="line">/</span>
+                                    个人电子发票                                                    </p>
+                </div>
+                <div class="icon-box">
+                    <i class="iconfont"><img src="images/yes_ok.png"></i>
+                </div>
+            </div>
+            
+            <div class="xm-plain-box">
+                                                <!-- 选择支付方式 -->
+                <div class="box-hd bank-title clearfix">
+                    <div id="titleWrap" class="title-wrap">
+                        <h2 class="title">选择支付方式</h2>
+                        <h2 class="title hide " >你还需要继续支付 <em>49.00</em> 元</h2>
+                        <span class="tip-tag"></span>
+                    </div>
+                </div>
+                <div class="box-bd" id="bankList">
+                    <div class="payment-bd">
+                    <form name="ck">
+                    <dl class="clearfix payment-box" >
+                    <dt>
+                                <strong>支付平台</strong>
+                                <p>手机等大额支付推荐使用支付宝快捷支付</p>
+                            </dt>
+                            <dd>
+                        <fieldset id="test4-input-input_tab1-input_tab2" style=" border:none;">
+                        <ul class="payment-list clearfix" >
+                           <li> <input class="input_tab1" name="myradio" id="r1" type="radio" checked="checked"/><label for="r1" ><img src="images/xhw.png" alt=""/></label></label></li>
+                            <li><input class="input_tab2" name="myradio" id="r2" type="radio" /><label for="r2" ><img src="images/zfb.png" alt=""/></label></li>
+                            <li> <input class="input_tab2" name="myradio" id="r2" type="radio" /><label for="r2" ><img src="images/yck.png" alt=""/></label></li>
+                           <li>  <input class="input_tab2" name="myradio" id="r2" type="radio" /><label for="r2" ><img src="images/zxzf.png" alt=""/></label></li>
+                             </ul>
+                        <div >
+                        <div id="test4_1">
+                        	<ul class="payment-list clearfix"  style="background-color:#f3f3f3;   ">
+                                        <div class="xhw">
+                                                <div class="whx_banner">
+                                                    <div style="clear:both"><p class="p1">请选择锡货卡：</p><p class="p2">对不起，没有可用的锡货卡！</p><a class="a3" href="#">立即去充值</a></div>
+                                                     <div style="clear:both"><p class="p1">已绑定手机号：</p><p class="a3">15961726437</p></div>
+                                                    <div style="clear:both"> <p class="p1">短信效验码</p><input id="mobileCode" name="mobileCode" type="text" value=""><input id="send" type="button" style="cursor:hand" value="点击获取手机验证码" onclick="sendMobileCode()"></div>
+                                                </div>
+                                        </div>
+                                </ul>
+                        </div>
+                        <div  id="test4_2" style="display:none;">
+                        	
+                        </div>
+                        <div  id="test4_3" style="display:none;">
+                        	
+                        </div>
+                        <div  id="test4_4" style="display:none;">
+                        	
+                        </div>
+
+                       
+
+                        </div>
+                        </fieldset>
+                        </dd>
+                        </dl>
+                        </form>
+
+                        <dl class="clearfix payment-box" >
+                            <dt>
+                                <strong>银行网银</strong>
+                                <p>支持以下各银行借记卡及信用卡</p>
+                                
+                            </dt>
+                            <dd>
+                                                                <ul class="payment-list clearfix">
+                                    <li><label  for="CMB"><input type="radio" name="payOnlineBank" id="CMB" value="CMB" /> <img src="http://s1.mi.com/images/payOnline_zsyh.gif" alt=""/></label></li>
+                                    <li><label  for="ICBCB2C"><input type="radio" name="payOnlineBank" id="ICBCB2C" value="ICBCB2C" /> <img src="http://s1.mi.com/images/payOnline_gsyh.gif" alt=""/></label></li>
+                                    <li><label  for="CCB"><input type="radio" name="payOnlineBank" id="CCB" value="CCB" /> <img src="http://s1.mi.com/images/payOnline_jsyh.gif" alt=""/></label></li>
+                                    <li><label  for="ABC"><input type="radio" name="payOnlineBank" id="ABC" value="ABC" /> <img src="http://s1.mi.com/images/payOnline_nyyh.gif" alt=""/></label></li>
+                                    <li><label  for="BOCB2C"><input type="radio" name="payOnlineBank" id="BOCB2C" value="BOCB2C" /> <img src="http://s1.mi.com/images/payOnline_zgyh.gif" alt=""/></label></li>
+                                    <li><label  for="COMM"><input type="radio" name="payOnlineBank" id="COMM" value="COMM" /> <img src="http://s1.mi.com/images/payOnline_jtyh.gif" alt=""/></label></li>
+                                    <li><label  for="PSBC-DEBIT"><input type="radio" name="payOnlineBank" id="PSBC-DEBIT" value="PSBC-DEBIT" /> <img src="http://s1.mi.com/images/payOnline_youzheng.gif" alt=""/></label></li>
+                                    <li><label  for="GDB"><input type="radio" name="payOnlineBank" id="GDB" value="GDB" /> <img src="http://s1.mi.com/images/payOnline_gfyh.gif" alt=""/></label></li>
+                                    <li><label  for="SPDB"><input type="radio" name="payOnlineBank" id="SPDB" value="SPDB" /> <img src="http://s1.mi.com/images/payOnline_pufa.gif" alt=""/></label></li>
+                                    <li><label  for="CEBBANK"><input type="radio" name="payOnlineBank" id="CEBBANK" value="CEBBANK" /> <img src="http://s1.mi.com/images/payOnline_gdyh.gif" alt=""/></label></li>
+                                    <li><label  for="SPABANK"><input type="radio" name="payOnlineBank" id="SPABANK" value="SPABANK" /> <img src="http://s1.mi.com/images/payOnline_payh.gif" alt=""/></label></li>
+                                    <li><label  for="CIB"><input type="radio" name="payOnlineBank" id="CIB" value="CIB" /> <img src="http://s1.mi.com/images/payOnline_xyyh.gif" alt=""/></label></li>
+                                    <li><label  for="CMBC"><input type="radio" name="payOnlineBank" id="CMBC" value="CMBC" /> <img src="http://s1.mi.com/images/payOnline_msyh.gif" alt=""/></label></li>
+                                    <li><label  for="BOB"><input type="radio" name="payOnlineBank" id="BOB" value="BOB" /> <img src="http://s1.mi.com/images/payOnline_bjyh.gif" alt=""/></label></li>
+                                    <li><label  for="CITIC"><input type="radio" name="payOnlineBank" id="CITIC" value="CITIC" /> <img src="http://s1.mi.com/images/payOnline_zxyh.gif" alt=""/></label></li>
+                                    <li><label  for="SDB"><input type="radio" name="payOnlineBank" id="SDB" value="SDB" /> <img src="http://s1.mi.com/images/payOnline_sfyh.gif" alt=""/></label></li>
+                                    <li><label  for="SHBANK"><input type="radio" name="payOnlineBank" id="SHBANK" value="SHBANK" /> <img src="http://s1.mi.com/images/payOnline_shyh.gif" alt=""/></label></li>
+                                    <li><label  for="BJRCB"><input type="radio" name="payOnlineBank" id="BJRCB" value="BJRCB" /> <img src="http://s1.mi.com/images/payOnline_bjnsyh.gif" alt=""/></label></li>
+                                    <li><label  for="NBBANK"><input type="radio" name="payOnlineBank" id="NBBANK" value="NBBANK" /> <img src="http://s1.mi.com/images/payOnline_nbyh.gif" alt=""/></label></li>
+                                    <li><label  for="HZCBB2C"><input type="radio" name="payOnlineBank" id="HZCBB2C" value="HZCBB2C" /> <img src="http://s1.mi.com/images/payOnline_hzyh.gif" alt=""/></label></li>
+                                    <li><label  for="SHRCB"><input type="radio" name="payOnlineBank" id="SHRCB" value="SHRCB" /> <img src="http://s1.mi.com/images/payOnline_shnsyh.gif" alt=""/></label></li>
+                                    <li><label  for="FDB"><input type="radio" name="payOnlineBank" id="FDB" value="FDB" /> <img src="http://s1.mi.com/images/payOnline_fcyh.gif" alt=""/></label></li>                                </ul>
+                            </dd>
+                        </dl>
+                        
+
+                                                
+                                                
+                    </div>
+                            </div>
+            <div class="box-ft clearfix">
+                    <input type="submit" class="btn btn-primary" value="去支付" id="payBtn">
+                    <a href="dingdan.html" class="btn btn-lineDakeLight">修改订单</a>
+                    <span class="tip"></span>
+                </div>
+            </div>
+</form>  
+</div>
+<!-- 支付弹框 -->
+<div class="modal hide to-pay-tip" id="toPayTip">
+    <div class="modal-header">
+        <span class="close" id="toPayTipClose">
+            <i class="iconfont">&#xe617;</i>
+        </span>
+        <h3>正在支付...</h3>
+    </div>
+    <div class="modal-body">
+        <div class="pay-tip clearfix">
+            <div class="fail">
+                <h4>如果支付失败...</h4>
+                <p>额度问题，推荐<a href="#" id="alipayTrigger">支付宝快捷支付 &gt;</a></p>
+                <p>其他问题，查看<a href="#">支付常见问题 &gt;</a></p>
+            </div>
+            <div class="success">
+                <h4>支付成功了</h4>
+                <p>立即查看<a href="#" target="_blank">订单详情 &gt;</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 余额支付弹框 -->
+<div class="modal hide  balance-pay" id="balancePay">
+    <div class="modal-body">
+        <h3>账户余额支付：<span class="num"><em id="useCashAccountPayLeft">0.00</em>元</span></h3>
+        <p id="checkCodeTip">短信验证码已下发至您的手机<span class="num"></span></p>
+        <input type="text" name="verifycode" id="verifycode" class="input" placeholder="请输入验证码"> <span class="send-again" id="sendAgain">重新发送<em></em></span>
+        <p><input type="button" value="确认支付" class="btn btn-primary" id="toPay">
+        <div class="select-other">
+            <p><span id="bankName"></span> <span class="num">49.00元</span></p>
+            
+        </div>
+        <a href="javascript:;" id="chooseOther">选择其他方式支付&gt;</a>
+    </div>
+    
+</div>
+
+
+
+    <script src="js/base.min.js"></script>
+
+        <script type="text/javascript" src="js/buyConfirm.js"></script>
+   
+</div>
+
+ 
+ <!--订单提交body部分结束-->
+		
+		<div class="w1200_container">
+	
+		</div>
+		<!--底部-->
+		<div class="footer_con">
+			<div class="fnc_container">
+				<div class="help-list">
+					<div class="help-item">
+						<h3>新手上路 </h3>
+						<ul>
+							<li>
+								<a href="#" title="售后流程" target="_blank">售后流程</a>
+							</li>
+							<li>
+								<a href="#" title="购物流程" target="_blank">购物流程</a>
+							</li>
+							<li>
+								<a href="#" title="订购方式" target="_blank">订购方式</a>
+							</li>
+						</ul>
+
+					</div>
+					<div class="help-item">
+						<h3>配送与支付 </h3>
+						<ul>
+							<li>
+								<a href="#" title="货到付款区域" target="_blank">货到付款区域</a>
+							</li>
+							<li>
+								<a href="#" title="配送支付智能查询 " target="_blank">配送支付智能查询</a>
+							</li>
+							<li>
+								<a href="#" title="支付方式说明" target="_blank">支付方式说明</a>
+							</li>
+						</ul>
+
+					</div>
+					<div class="help-item">
+						<h3>会员中心</h3>
+						<ul>
+							<li>
+								<a href="#" title="资金管理" target="_blank">资金管理</a>
+							</li>
+							<li>
+								<a href="#" title="我的收藏" target="_blank">我的收藏</a>
+							</li>
+							<li>
+								<a href="#" title="我的订单" target="_blank">我的订单</a>
+							</li>
+						</ul>
+
+					</div>
+					<div class="help-item">
+						<h3>服务保证 </h3>
+						<ul>
+							<li>
+								<a href="#" title="退换货原则" target="_blank">退换货原则</a>
+							</li>
+							<li>
+								<a href="#" title="售后服务保证" target="_blank">售后服务保证</a>
+							</li>
+							<li>
+								<a href="#" title="产品质量保证 " target="_blank">产品质量保证</a>
+							</li>
+						</ul>
+
+					</div>
+					<div class="help-item">
+						<h3>联系我们 </h3>
+						<ul>
+							<li>
+								<a href="#" title="网站故障报告" target="_blank">网站故障报告</a>
+							</li>
+							<li>
+								<a href="#" title="选机咨询 " target="_blank">选机咨询</a>
+							</li>
+							<li>
+								<a href="#" title="投诉与建议 " target="_blank">投诉与建议</a>
+							</li>
+						</ul>
+					</div>
+					<div class="help-item">
+						<h3>关注我们 </h3>
+						<img src='images/erweima.png' />
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!--右侧红包栏-->
+		<div class="bk_foot_redbag">
+			<a href="#">
+				<img src="images/red_package.png" width="100%" alt="">
+			</a>
+			<span class="closehd"></span>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/kuCity.js"></script>
+	<script type="text/javascript" src="js/jquery.SuperSlide.js"></script>
+	<script type="text/javascript" src="js/slide.js"></script>
+	<script>
+		$('.li_dorpdown').hover(function() {
+			$('.dorpdown-layer').show();
+		});
+		$('.li_dorpdown').mouseleave(function() {
+			$('.dorpdown-layer').hide();
+		});
+		$('.icon-close').click(function() {
+			$('.top_banner').hide();
+		});
+		$('.my_center_box_left a').hover(function() {
+
+		});
+		$('.cate-layer-right-slide img').mouseenter(function() {
+
+			$(this).delay('300').animate(300);
+		});
+		$('.cate-layer-right-slide img').mouseleave(function() {
+			$(this).css('border', 'none')
+		});
+		$()
+	</script>
+	<script>
+		$('.search').kuCity();
+		
+	</script>
+
+
+
+</html>

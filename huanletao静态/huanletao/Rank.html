@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		
+		table.hovertable {
+			font-family: verdana,arial,sans-serif;
+			font-size:11px;
+			color:#333333;
+			border-width: 1px;
+			border-color: #999999;
+			border-collapse: collapse;
+		}
+		table.hovertable th {
+			background-color:#c3dde0;
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #a9c6c9;
+		}
+		table.hovertable tr {
+			background-color:#d4e3e5;
+		}
+		table.hovertable td {
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #a9c6c9;
+		}#productData {
+			font-family: verdana,arial,sans-serif;
+			font-size:11px;
+			color:#333333;
+			border-width: 1px;
+			border-color: #999999;
+			border-collapse: collapse;
+		}
+		#productData th {
+			background-color:#c3dde0;
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #a9c6c9;
+		}
+		#productData tr {
+			background-color:#d4e3e5;
+		}
+		#productData td {
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #a9c6c9;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	</head>
+	<body>
+		请输入需要查询排名的数量：<input type="text" name="num" id="num" value="" />
+		<button id="query">查询</button>
+		<table class="hovertable"id="aaa">
+						<tr>
+						<th>商品名称</th>
+						<th>商品价格</th>
+						<th>商品描述</th>
+						<th>商品销量</th>
+						</tr>
+				</table>
+	</body>
+</html>
+<script type="text/javascript">
+	$("#query").click(function(){
+		$("#aaa tr:gt(0)").remove();
+		var num = $("#num").val()-1;
+		if(num>100&&num>0){
+			alert("请输入1-99的数字");
+			return;
+		}
+		 		$.ajax({
+				url:"http://www.huanletao.com/products/prank?num="+num,
+				dataType:"json",
+				type:"post",
+				success:function(data){
+					$("#aaa tr:gt(0)").remove();
+					        if(data.length>0){						
+                        $.each(data,function(index, product){
+    	$("#aaa").append("<tr>\n" +
+		"\t<td>"+product.productName+"</td>\n" +
+		"\t<td>"+product.productPrice+"</td>\n" +
+		"\t<td>"+product.productDescription+"</td>\n" +
+		"\t<td>"+product.sales+"</td>\n" 
+		);
+                        
+                        })}
+				}
+			})
+		
+		
+	})
+</script>

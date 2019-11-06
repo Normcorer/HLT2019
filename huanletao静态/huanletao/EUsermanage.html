@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	
+		<link rel="stylesheet" href="src/jquery.page.css">
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.SuperSlider.js"></script>
+		<script type="text/javascript" src="src/jquery.page.js"></script>
+		 <style type="text/css">
+
+        #all_light { /*整个弹窗的页面*/
+
+            opacity: 0.8; /*透明度*/
+
+            width: 100%; /*宽度*/
+
+            height: 2300px; /*高度，不能百分百*/
+
+            background: #000; /*背景色*/
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0; /*定位*/
+
+            display: none; /*隐藏*/
+
+            z-index: 2; /*覆盖*/
+
+        }
+
+        #contes { /* 弹框的页面*/
+
+            width: 500px; /*宽度*/
+
+            height: 500px; /*高度*/
+
+            background: #fff; /*背景色*/
+
+            display: none; /*隐藏*/
+
+            z-index: 2; /*覆盖*/
+
+            position: absolute;
+
+            top: 100px;
+
+            left: 400px; /* 定位*/
+
+        }
+
+        input{
+
+            margin-bottom: 10px;
+
+        }
+
+    </style>
+		
+		
+		<style type="text/css">
+		
+		table.hovertable {
+			font-family: verdana,arial,sans-serif;
+			font-size:11px;
+			color:#333333;
+			border-width: 1px;
+			border-color: #999999;
+			border-collapse: collapse;
+		}
+		table.hovertable th {
+			background-color:#c3dde0;
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #a9c6c9;
+		}
+		table.hovertable tr {
+			background-color:#d4e3e5;
+		}
+		table.hovertable td {
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #a9c6c9;
+		}#productData {
+			font-family: verdana,arial,sans-serif;
+			font-size:11px;
+			color:#333333;
+			border-width: 1px;
+			border-color: #999999;
+			border-collapse: collapse;
+		}
+		#productData th {
+			background-color:#c3dde0;
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #a9c6c9;
+		}
+		#productData tr {
+			background-color:#d4e3e5;
+		}
+		#productData td {
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #a9c6c9;
+		}
+	</style>
+
+
+
+	</head>
+	<body>
+				<div class="control-group">
+				<!-- Select -->
+				<label class="control-label leipiplugins-orgname">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;用户管理界面</label>
+
+				<br/>
+				<input type="date"  id="myTime"/>
+				<button id="Userselect">查询</button>
+				<button id="showSevenDayUser"  onclick="queryseven()">显示7天登录的人</button>
+				<a>用户总量:</a><em id="zs"></em>
+				<a id="usertotal"></a>
+				&nbsp;&nbsp;
+				<a>登录用户总量：</a><em id="dlzs"></em>
+				<a id="logintotal"> </a>
+				
+				<table class="hovertable"id="UserShow">
+						<tr>
+						<th>ID</th>
+						<th>UUID</th>
+						<th>用户名</th>
+						<th>用户密码</th>
+						<th>用户手机号</th>
+						<th>用户昵称</th>
+						<th>用户邮箱</th>
+						<th>用户级别</th>
+						<th>注册时间</th>
+						<th>最近登录时间</th>
+						<th>操作</th>
+						</tr>
+				</table>
+		
+			</div>
+			<!--弹框-->
+			
+					<div id="contes" style="">
+		<div style="width:500px;height:40px;">
+        编辑商品<a href='javascript:void(0)' id="close">关闭</a>
+		<hr>
+        <form style=" margin-left: 100px;" id="renew">
+        			用户名：<input id="productId"  readonly="readonly" name="productId"  type="text" title="商品名称" value="" class="leipiplugins" leipiplugins="text">
+					<br>
+					昵称：<input name="productName" type="text" value="" class="leipiplugins" leipiplugins="text">
+					<br>
+					密码：<input name="productPrice" type="text"  value="" class="leipiplugins" leipiplugins="text">
+					<br>
+					确认密码：<input name="productRprice" type="text"  value="" class="leipiplugins" leipiplugins="text">
+					<br>
+					手机号：<textarea  name="productDescription" class="leipiplugins" leipiplugins="textarea" orgname="商品描述"> </textarea>
+					<br>
+		
+        </form>
+
+		<br>
+
+		<div>
+			<button style=" margin-left: 100px;" type="submit" onclick="submit()">确认修改</button> 
+		</div>
+
+
+
+
+    </div>
+
+</div>
+				<!--分页按钮-->
+				<div id="page"></div>
+				
+
+<div id="User_all_light">
+
+</div>
+	</body>
+
+	
+
+	
+    		<script type="text/javascript">
+		
+		$("#Userselect").click(function(){
+		
+			var time=$("#myTime").val();//2019-12-06
+			if($.isEmptyObject(time))
+			{
+			alert("请选择日期");
+			}
+			else{
+				//拆分合并
+			var newtime="";
+			var fsa=time.split("-");
+			for(i=0;i<fsa.length;i++)
+			{
+			newtime=newtime+fsa[i];
+			}
+			console.log(newtime );
+				$.ajax({
+				url:"http://www.huanletao.com/user/getActiveInOneDay",
+					dataType:"json",
+				type:"POST",
+				data:{
+					"time":newtime,
+				},
+				success:function(result){
+				
+					if(result.status==200)
+					{
+				
+								$("#UserShow tr:gt(0)").remove();
+								console.log(result.data.length);
+					        if(result.data.length>0){						
+                        $.each(result.data,function(index, user){
+                         console.log(user.userName);
+					 $("#UserShow").append("<tr>\n" +
+						"\t<td>"+user.id+"</td>\n" +
+						"\t<td>"+user.userId+"</td>\n" +
+						"\t<td>"+user.userName+"</td>\n" +
+						"\t<td>"+user.userPassword+"</td>\n" +
+						"\t<td>"+user.userPhone+"</td>\n" +
+						"\t<td>"+user.userNickname+"</td>\n" +
+						"\t<td>"+user.userEmail+"</td>\n" +
+						"\t<td>"+user.userType+"</td>\n" +
+						"\t<td>"+new Date(user.registerTime).toLocaleString()+"</td>\n" +
+						"\t<td>"+new Date(user.lastLoginTime).toLocaleString()+"</td>\n" +
+						"\t<td><a href='javascript:void(0)' onclick='addUser(\""+user.userId+"\")'>添加</a>&nbsp;&nbsp;<a href='javascript:void(0)' onclick='delUser(\""+user.userId+"\")'>删除</a></td>\n" +
+						"</tr>");
+                        })}
+					}
+					else{
+						$("#UserShow tr:gt(0)").remove();
+				  }	
+			}
+			});
+			}
+		});
+		$(function(){
+			//获得登录人数总数
+			
+				$.ajax({
+				url:"http://www.huanletao.com/user/getTotalUserCount",
+				type:"POST",
+				success:function(data){
+						document.getElementById("dlzs").innerText=data;
+				}
+			})
+			
+			//查询分页总数
+						$("#UserShow tr:gt(0)").remove();
+			
+				function ajaxGetPage(){
+			
+			$.ajax({
+				url:"http://www.huanletao.com/user/queryUserByPage",
+					dataType:"json",
+					async:false,
+				type:"POST",
+				data:{
+					page:1 ,
+					rows:30
+				},
+				success:function(data){
+					temp= data.total
+					console.log(temp)
+				}
+			})
+			return temp;
+		}
+				//获取总页数为全局变量
+			var page1 = ajaxGetPage();
+			var totalpage = Math.ceil(page1/30)
+		 	document.getElementById("zs").innerText=page1;
+			console.log("总页数："+totalpage)
+
+			//第一次显示时候的页面
+			$.ajax({
+				url:"http://www.huanletao.com/user/queryUserByPage",
+				dataType:"json",
+				type:"post",
+				data:{
+					page:1 ,
+					rows:30
+				},
+					success:function(data){
+						$("#UserShow tr:gt(0)").remove();
+					        if(data.rows.length>0){						
+                        $.each(data.rows,function(index, user){
+
+     $("#UserShow").append("<tr>\n" +
+		"\t<td>"+user.id+"</td>\n" +
+		"\t<td>"+user.userId+"</td>\n" +
+		"\t<td>"+user.userName+"</td>\n" +
+		"\t<td>"+user.userPassword+"</td>\n" +
+		"\t<td>"+user.userPhone+"</td>\n" +
+		"\t<td>"+user.userNickname+"</td>\n" +
+		"\t<td>"+user.userEmail+"</td>\n" +
+		"\t<td>"+user.userType+"</td>\n" +
+		"\t<td>"+new Date(user.registerTime).toLocaleString()+"</td>\n" +
+		"\t<td>"+new Date(user.lastLoginTime).toLocaleString()+"</td>\n" +
+		"\t<td><a href='javascript:void(0)' onclick='addUser(\""+user.userId+"\")'>添加</a>&nbsp;&nbsp;<a href='javascript:void(0)' onclick='delUser(\""+user.userId+"\")'>删除</a></td>\n" +
+		"</tr>");
+                        })}
+			      
+				}
+			});
+			
+						     	$("#page").Page({
+          totalPages:  totalpage	,//分页总数
+          liNums: 7,//分页的数字按钮数(建议取奇数)
+          activeClass: 'activP', //active 类样式定义
+          callBack : function(page){
+         		$.ajax({
+				url:"http://www.huanletao.com/user/queryUserByPage",
+				dataType:"json",
+				type:"post",
+				data:{
+					page:page　|| 1 ,
+					rows:30
+				},
+					success:function(data){
+						$("#UserShow tr:gt(0)").remove();
+					        if(data.rows.length>0){	
+                        $.each(data.rows,function(index, user){
+
+     $("#UserShow").append("<tr>\n" +
+		"\t<td>"+user.id+"</td>\n" +
+		"\t<td>"+user.userId+"</td>\n" +
+		"\t<td>"+user.userName+"</td>\n" +
+		"\t<td>"+user.userPassword+"</td>\n" +
+		"\t<td>"+user.userPhone+"</td>\n" +
+		"\t<td>"+user.userNickname+"</td>\n" +
+		"\t<td>"+user.userEmail+"</td>\n" +
+		"\t<td>"+user.userType+"</td>\n" +
+		"\t<td>"+new Date(user.registerTime).toLocaleString()+"</td>\n" +
+		"\t<td>"+new Date(user.lastLoginTime).toLocaleString()+"</td>\n" +
+		"\t<td><a href='javascript:void(0)' onclick='addUser(\""+user.userId+"\")'>添加</a>&nbsp;&nbsp;<a href='javascript:void(0)' onclick='delUser(\""+user.userId+"\")'>删除</a></td>\n" +
+		"</tr>");
+                        })}
+			      
+				}
+			});
+          }
+          
+      });
+      
+          });
+			
+			
+			
+			
+			
+		          
+	</script>
+	
+
+  
+
+<script type="text/javascript">
+		         function addUser(userId){
+            if(productId==null){
+                alert("用户id错误");
+                return;
+            }
+//          if(userId==""||userId==null){
+//              window.location.href="./login.html";
+//              return;
+//          }
+			document.getElementById('all_light').style.display;
+		    document.getElementById('contes').style.display = 'block';
+		    $('#productId').val(userId);
+
+        }
+		         
+  		
+	
+</script>
+
+
+	<script type="text/javascript">
+		//修改商品
+		function submit(){
+			 $.post("http://www.huanletao.com/products/renew",$("#renew").serialize(), function(data){
+            if(data.status == 200){
+                alert("修改商品成功");
+            }
+        });
+		}
+
+   	$("#close").click(function(){
+   		$("#contes").css("display","none");
+   	})
+   	
+   	function queryseven(){
+   		
+			$.ajax({
+			
+				url:"http://www.huanletao.com/user/getActiveUserByDay?daynum=7",
+				dataType:"json",
+				type:"POST",
+				success:function(result){
+				
+					if(result.status==200)
+					{
+				
+								$("#UserShow tr:gt(0)").remove();
+					        if(result.data.length>0){						
+                        $.each(result.data,function(index, user){
+                         console.log(user.userName);
+					 $("#UserShow").append("<tr>\n" +
+						"\t<td>"+user.id+"</td>\n" +
+						"\t<td>"+user.userId+"</td>\n" +
+						"\t<td>"+user.userName+"</td>\n" +
+						"\t<td>"+user.userPassword+"</td>\n" +
+						"\t<td>"+user.userPhone+"</td>\n" +
+						"\t<td>"+user.userNickname+"</td>\n" +
+						"\t<td>"+user.userEmail+"</td>\n" +
+						"\t<td>"+user.userType+"</td>\n" +
+						"\t<td>"+new Date(user.registerTime).toLocaleString()+"</td>\n" +
+						"\t<td>"+new Date(user.lastLoginTime).toLocaleString()+"</td>\n" +
+		"\t<td><a href='javascript:void(0)' onclick='addUser(\""+user.userId+"\")'>添加</a>&nbsp;&nbsp;<a href='javascript:void(0)' onclick='delUser(\""+user.userId+"\")'>删除</a></td>\n" +
+		"</tr>"
+						);
+                        })}
+					}
+					else{
+						$("#UserShow tr:gt(0)").remove();
+				  }	
+			}
+			});
+	
+   		
+   		
+   		
+   	}
+	</script>
+
+
+
+	</html>

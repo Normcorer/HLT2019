@@ -1,0 +1,79 @@
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>后台管理</title>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<style>
+	#container1 {
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+	
+	#d1 {
+		float: left;
+		width: 10%;
+		height: 100%;
+		
+	}
+	
+	#d2 {
+		float: right;
+		width: 90%;
+		height: 10%;
+		
+	}
+	
+	#d3 {
+		float: right;
+		width: 90%;
+		height: 90%;
+		
+	}
+	
+	
+</style>
+	</head>
+	<body>
+		
+
+<div id="container">
+	<div id="d1">
+		<div style="padding-top: 80px; padding-left: 50px;">
+		<a id="user">用户管理</a>	
+		<br>
+		<br>
+		<a id="insert">商品新增</a>	
+		<br>
+		<br>
+	
+		<a id="update">商品管理</a>
+		<br>
+		<br>
+		<a id="Rank">商品排行</a>
+		</div>
+	</div>
+	<div id="d2" style="text-align: center;">
+		<h1 style="align-content: center; ">欢乐购后台管理系统</h1>
+	</div>
+	<div id="d3">
+		<iframe id="frame" width="100%" height="100%" frameBorder="0"></iframe>
+	</div>
+</div>
+
+	</body>
+	<script type="text/javascript">
+		$("#user").click(function(){
+			$("#frame").attr("src","EUsermanage.html");
+		})
+		$("#insert").click(function(){
+			$("#frame").attr("src","productinsert.html");
+		})
+		$("#update").click(function(){
+			$("#frame").attr("src","productupdate.html");
+		})
+		$("#Rank").click(function(){
+			$("#frame").attr("src","Rank.html");
+		})
+	</script>
+</html>

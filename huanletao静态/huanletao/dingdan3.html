@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" href="css/slide.css" />
+     <link rel="icon" href="images/assets/img/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="css/FTBwebbase.css" />
+    <link rel="stylesheet" type="text/css" href="css/FTBpages-seckillOrder.css" />
+    
+    
+</head>
+<body>
+	<div class="top_banner">
+			<div class="module w1200">
+				<a href="javascript:">
+				<img src="images/active.jpg" />
+					<i class="icon-close"><img src="images/close.png"/></i>
+				</a>
+			</div>
+		</div>
+		<div class="site-nav" id="site-nav">
+			<div class="w w1200">
+				<div class="fl">
+					<div class="city-choice" id="city-choice" data-ectype="dorpdown">
+						<div class="dsc-choie dsc-cm" ectype="dsc-choie">
+							<img src="images/place.png" class="place" />
+							<input type="text" value="北京" class="search" />
+						</div>
+
+					</div>
+					<div class="txt-info" id="ECS_MEMBERZONE">
+						<a href="#" class="link-login red">请登录</a>
+						<a href="#" class="link-regist">免费注册</a>
+					</div>
+				</div>
+				<ul class="quick-menu fr">
+					<li>
+						<div class="dt">
+							<a href="myorder.html">我的订单</a>
+						</div>
+					</li>
+				
+					<li class="spacer"></li>
+					<li>
+						<div class="dt">
+							<a href="./ecart.html">我的购物车</a>
+						</div>
+					</li>
+					<li class="spacer"></li>
+					<li>
+						<div class="dt">
+							<a href="#">我的收藏</a>
+						</div>
+					</li>
+					<li class="spacer"></li>
+					<li>
+						<div class="dt">
+							<a href="#">客户服务</a>
+						</div>
+					</li>
+					<li class="spacer"></li>
+					<li class="li_dorpdown" data-ectype="dorpdown">
+						<div class="dt dsc-cm">网站导航</div>
+						<div class="dd dorpdown-layer" style="z-index: 10000000;">
+							<dl class="fore1">
+								<dt>特色主题</dt>
+								<dd>
+									<div class="item">
+										<a href="#" target="_blank">家用电器</a>
+									</div>
+									<div class="item">
+										<a href="#" target="_blank">手机数码</a>
+									</div>
+									<div class="item">
+										<a href="#" target="_blank">电脑办公</a>
+									</div>
+								</dd>
+							</dl>
+							<dl class="fore2">
+								<dt>促销活动</dt>
+								<dd>
+									<div class="item">
+										<a href="#">拍卖活动</a>
+									</div>
+									<div class="item">
+										<a href="#">共创商品</a>
+									</div>
+									<div class="item">
+										<a href="#">优惠活动</a>
+									</div>
+									<div class="item">
+										<a href="#">批发市场</a>
+									</div>
+									<div class="item">
+										<a href="#">超值礼包</a>
+									</div>
+									<div class="item">
+										<a href="#">优惠券</a>
+									</div>
+								</dd>
+							</dl>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="header">
+			<div class="header_container">
+				<div class="logo fl">
+					<img src="images/logo.png" />
+					<a href="#"><img src="images/ecsc-join.gif" /></a>
+				</div>
+				<div class="dsc-search">
+					<div class="form">
+						<form class="search-form">
+							<input name="keywords" type="text" id="keyword" value="" class="search-text" style="color: rgb(153, 153, 153);">
+							<button type="submit" class="button button-goods">搜商品</button>
+							<button type="submit" class="button button-store">搜店铺</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="nav" ectype="dscNav">
+			<div class="w w1200">
+				<div class="categorys ">
+					<div class="categorys-type">
+						<a href="#" target="_blank">全部商品分类</a>
+					</div>
+				</div>
+				<div class="nav-main" id="nav">
+					<ul class="navitems">
+						<li>
+							<a href="#" class="curr">首页</a>
+						</li>
+						<li>
+							<a href="#">食品特产</a>
+						</li>
+						<li>
+							<a href="#">服装城</a>
+						</li>
+						<li>
+							<a href="#">大家电</a>
+						</li>
+						<li>
+							<a href="#">鞋靴箱包</a>
+						</li>
+						<li>
+							<a href="#">品牌专区</a>
+						</li>
+						<li>
+							<a href="#">聚划算</a>
+						</li>
+						<li>
+							<a href="#">积分商城</a>
+						</li>
+						<li>
+							<a href="#">预售</a>
+						</li>
+						<li>
+							<a href="#">店铺街</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+    <!--head-->
+    <div id="paySvm">
+        <div class="top">
+            <shortcut />
+        </div>
+        <div class="cart py-container">
+            <!--logoArea-->
+        
+            <!--主内容-->
+            <div class="paysuccess">
+                <div class="success">
+                    <h3><img src="images/_/right.png" width="48" height="48">　恭喜您，支付成功啦！</h3>
+                    <div class="paydetail">
+                    <p>支付方式：微信支付</p>
+                    <p>支付金额：￥{{ly.formatPrice(totalPay)}}元</p>
+                    <p class="button">
+                        <a href="myorder.html" class="sui-btn btn-xlarge btn-danger">查看订单</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="index.html"  class="sui-btn btn-xlarge ">继续购物</a>
+                    </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="./js/vue/vue.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/common.js"></script>
+    <!--<script type="text/javascript">
+        var payVm = new Vue({
+            el:"#paySvm",
+            data:{
+                ly,
+                totalPay:0, //总金额
+            },
+            created(){
+                ly.verifyUser().then(() => {
+                    this.totalPay = ly.store.get("totalPay");
+                    //1.删除本地数据
+                    ly.store.del("selectedCarts");
+                    //2.支付成功，更新购物车数据
+                    //2.1获取已经购买了的商品id
+                    ly.http.get("/order/skuId/"+ly.store.get("orderId")).then(({data}) => {
+                        data.forEach(id => {
+                            //2.2删除
+                            ly.http.delete("/cart/"+id).then(() => {
+                                console.log("更新成功！");
+                            });
+                        })
+                    }).catch(()=>{
+                        console.log("更新失败");
+                    });
+                }).catch(() => {
+                    location.href = "/login.html?returnUrl=" + location.href;
+                });
+            },
+            components:{
+                shortcut: () => import("/js/pages/shortcut.js")
+            },
+        });
+    </script>-->
+
+	<!-- 底部栏位 -->
+	<!--页面底部，由js动态加载-->
+    <script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+	<div class="clearfix footer"></div>
+	<script type="text/javascript">$(".footer").load("foot.html");</script>
+	<!--页面底部END-->
+		
+
+    <script type="text/javascript" src="js/plugins/jquery.easing/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="js/plugins/sui/sui.min.js"></script>
+    <script type="text/javascript" src="components/ui-modules/nav/nav-portal-top.js"></script>
+    <div class="w1200_container">
+	
+		</div>
+		<!--底部-->
+		<div class="footer_con">
+			<div class="fnc_container">
+				<div class="help-list">
+					<div class="help-item">
+						<h3>新手上路 </h3>
+						<ul>
+							<li>
+								<a href="#" title="售后流程" target="_blank">售后流程</a>
+							</li>
+							<li>
+								<a href="#" title="购物流程" target="_blank">购物流程</a>
+							</li>
+							<li>
+								<a href="#" title="订购方式" target="_blank">订购方式</a>
+							</li>
+						</ul>
+
+					</div>
+					<div class="help-item">
+						<h3>配送与支付 </h3>
+						<ul>
+							<li>
+								<a href="#" title="货到付款区域" target="_blank">货到付款区域</a>
+							</li>
+							<li>
+								<a href="#" title="配送支付智能查询 " target="_blank">配送支付智能查询</a>
+							</li>
+							<li>
+								<a href="#" title="支付方式说明" target="_blank">支付方式说明</a>
+							</li>
+						</ul>
+
+					</div>
+					<div class="help-item">
+						<h3>会员中心</h3>
+						<ul>
+							<li>
+								<a href="#" title="资金管理" target="_blank">资金管理</a>
+							</li>
+							<li>
+								<a href="#" title="我的收藏" target="_blank">我的收藏</a>
+							</li>
+							<li>
+								<a href="#" title="我的订单" target="_blank">我的订单</a>
+							</li>
+						</ul>
+
+					</div>
+					<div class="help-item">
+						<h3>服务保证 </h3>
+						<ul>
+							<li>
+								<a href="#" title="退换货原则" target="_blank">退换货原则</a>
+							</li>
+							<li>
+								<a href="#" title="售后服务保证" target="_blank">售后服务保证</a>
+							</li>
+							<li>
+								<a href="#" title="产品质量保证 " target="_blank">产品质量保证</a>
+							</li>
+						</ul>
+
+					</div>
+					<div class="help-item">
+						<h3>联系我们 </h3>
+						<ul>
+							<li>
+								<a href="#" title="网站故障报告" target="_blank">网站故障报告</a>
+							</li>
+							<li>
+								<a href="#" title="选机咨询 " target="_blank">选机咨询</a>
+							</li>
+							<li>
+								<a href="#" title="投诉与建议 " target="_blank">投诉与建议</a>
+							</li>
+						</ul>
+					</div>
+					<div class="help-item">
+						<h3>关注我们 </h3>
+						<img src='images/erweima.png' />
+					</div>
+
+				</div>
+			</div>
+		</div>
+		
+	</body>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/kuCity.js"></script>
+	<script src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/jquery.SuperSlide.js"></script>
+	<script type="text/javascript" src="js/slide.js"></script>
+	<script>
+		$('.li_dorpdown').hover(function() {
+			$('.dorpdown-layer').show();
+		});
+		$('.li_dorpdown').mouseleave(function() {
+			$('.dorpdown-layer').hide();
+		});
+		$('.icon-close').click(function() {
+			$('.top_banner').hide();
+		});
+		$('.my_center_box_left a').hover(function() {
+
+		});
+		$('.cate-layer-right-slide img').mouseenter(function() {
+
+			$(this).delay('300').animate(300);
+		});
+		$('.cate-layer-right-slide img').mouseleave(function() {
+			$(this).css('border', 'none')
+		});
+		$()
+	</script>
+	<script>
+		$(function () {
+
+				var userId="";
+				var ticket = $.cookie("EASYBUY_TICKET");
+				 if(!ticket){
+				 	window.location.href="login.html";
+				 	return;
+				 }
+
+
+				$.ajax({
+					url:"http://www.huanletao.com/user/query/"+ticket,
+					dataType:"json",
+					type:"GET",
+					success:function (data) {
+						if(data.status==200){
+							var _data = JSON.parse(data.data);
+							if(_data == null){
+								alert("用户超时，查看redis是否还有数据");
+								window.location.href="./login.html";
+								return ;
+							}
+							console.log("登录成功")
+							var html = _data.userName+",欢迎来到欢乐淘!" +
+									"<a href='javascript:void(0)' class='link-logout' onclick='logout()'>[退出]</a>" +
+									"\|<a href='http://www.huanletao.com/manager.html'>[后台]</a>"
+							/*后台地址要修改*/
+							/*后台地址要修改*/
+							/*后台地址要修改*/
+							userId=_data.userId;
+							console.log(userId);
+							$(".txt-info").html(html);
+							console.log(222);
+						}
+						
+					},
+					error:function () {
+						alert("出错了");
+
+					}
+
+				})
+			})	
+			function logout(){
+			$.ajax({
+			   url:"http://www.huanletao.com/user/logout",
+			   data:{"ticket":$.cookie("EASYBUY_TICKET")},
+			   dataType:"json",
+			   type:"POST",
+			   success:function (data) {
+				   if(data.status==200){
+					   window.location.href="http://www.huanletao.com/";
+					   return;
+				   }else{
+					   alert("登出失败");
+					   return;
+				   }
+			   },
+			   erro:function () {
+				   alert("登出请求发送失败");
+			   }
+			});
+		}
+		
+	</script>
+
+</html>

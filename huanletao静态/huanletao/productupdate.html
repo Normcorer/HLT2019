@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	
+		<link rel="stylesheet" href="src/jquery.page.css">
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.SuperSlider.js"></script>
+		<script type="text/javascript" src="src/jquery.page.js"></script>
+		 <style type="text/css">
+
+        #all_light { /*整个弹窗的页面*/
+
+            opacity: 0.8; /*透明度*/
+
+            width: 100%; /*宽度*/
+
+            height: 2300px; /*高度，不能百分百*/
+
+            background: #000; /*背景色*/
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0; /*定位*/
+
+            display: none; /*隐藏*/
+
+            z-index: 2; /*覆盖*/
+
+        }
+
+        #contes { /* 弹框的页面*/
+
+            width: 500px; /*宽度*/
+
+            height: 500px; /*高度*/
+
+            background: #fff; /*背景色*/
+
+            display: none; /*隐藏*/
+
+            z-index: 2; /*覆盖*/
+
+            position: absolute;
+
+            top: 100px;
+
+            left: 400px; /* 定位*/
+
+        }
+
+        input{
+
+            margin-bottom: 10px;
+
+        }
+
+    </style>
+		
+		
+		<style type="text/css">
+		
+		table.hovertable {
+			font-family: verdana,arial,sans-serif;
+			font-size:11px;
+			color:#333333;
+			border-width: 1px;
+			border-color: #999999;
+			border-collapse: collapse;
+		}
+		table.hovertable th {
+			background-color:#c3dde0;
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #a9c6c9;
+		}
+		table.hovertable tr {
+			background-color:#d4e3e5;
+		}
+		table.hovertable td {
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #a9c6c9;
+		}#productData {
+			font-family: verdana,arial,sans-serif;
+			font-size:11px;
+			color:#333333;
+			border-width: 1px;
+			border-color: #999999;
+			border-collapse: collapse;
+		}
+		#productData th {
+			background-color:#c3dde0;
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #a9c6c9;
+		}
+		#productData tr {
+			background-color:#d4e3e5;
+		}
+		#productData td {
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #a9c6c9;
+		}
+	</style>
+
+
+
+	</head>
+	<body>
+				<div class="control-group">
+				<!-- Select -->
+				<label class="control-label leipiplugins-orgname">一级分类</label>
+				<div class="controls" id="cate">
+					<select id="fCatelog" name="fCatelog" >
+						<option value="-1">请选择分类</option>
+					</select>
+					<select id="sCatelog"  name="sCatelog" >
+						<option >请选择分类</option>
+					</select>
+					<select id="tCatelog"  name="tCatelog">
+						<option >请选择分类</option>
+					</select>
+					<button id="select">查询</button>
+					<span>商品总数：</span><em id="pzs"></em>
+				</div>
+				<table class="hovertable"id="aaa">
+						<tr>
+						<th>商品名称</th>
+						<th>商品价格</th>
+						<th>商品销量</th>
+						<th>商品库存</th>
+						<th>商品描述</th>
+						<th>上下架状态</th>
+						<th>上架时间</th>
+						<th>上下架操作</th>
+						<th>编辑商品</th>
+						</tr>
+				</table>
+		
+			</div>
+				<!--分页按钮-->
+				<div id="page"></div>
+				
+				<!--  弹框的div -->
+
+		<div id="contes" style="">
+		<div style="width:500px;height:40px;">
+        编辑商品<a href='javascript:void(0)' id="close">关闭</a>
+		<hr>
+        <form style=" margin-left: 100px;" id="renew">
+        			商品编号：<input id="productId"  readonly="readonly" name="productId"  type="text" title="商品名称" value="" class="leipiplugins" leipiplugins="text">
+					<br>
+					商品名称：<input name="productName" type="text" title="商品名称" value="" class="leipiplugins" leipiplugins="text">
+					<br>
+					商城价格：<input name="productPrice" type="text" title="商城价格" value="" class="leipiplugins" leipiplugins="text">
+					<br>
+					真实价格：<input name="productRprice" type="text" title="真实价格" value="" class="leipiplugins" leipiplugins="text">
+			
+<!--
+				<div class="controls" id="cate">
+					<select id="fCatelog" name="fCatelog" >
+						<option value="-1">请选择分类</option>
+					</select>
+					<select id="sCatelog"  name="sCatelog" >
+						<option >请选择分类</option>
+					</select>
+					<select id="tCatelog"  name="tCatelog">
+						<option >请选择分类</option>
+					</select>
+				</div>-->
+<br>
+					商品描述：<textarea title="商品描述" name="productDescription" class="leipiplugins" leipiplugins="textarea" orgname="商品描述"> </textarea>
+					<br>
+					商品库存：<input name="productNum" type="text" title="商品库存" value="" class="leipiplugins" leipiplugins="text">
+			<br>
+					图片地址：<input id="imgInput" type="text" name="productImgurl" value="" />
+        </form>
+		</form>
+		
+		 <form id="form1" action="" method="post" enctype="multipart/form-data" style=" margin-left: 100px;">
+        <input  type="file" name="imgOne" class="imgOne" id="imgOne"
+                onchange=""/>
+    	</form>
+		<br>
+
+		<div>
+			<button style=" margin-left: 100px;" type="submit" onclick="submit()">提交</button> 
+		</div>
+
+
+
+
+    </div>
+
+</div>
+
+<div id="all_light">
+
+</div>
+	</body>
+	<script type="text/javascript">
+		var provinceArr=['家用电器','手机数码'];
+		var cityArr=[
+		['大家电','生活电器'],
+		['智能设备','数码配件']
+		];
+		var countryArr=[
+			[
+				['平板电视','空调'],
+				['电风扇','冷风扇']
+			],
+			[
+				['智能手环','智能手表'],
+				['存储卡','读卡器']
+			]
+		]
+		function createOption(obj,dara){
+			for(var i in dara){
+				var op = new Option(dara[i],i);
+				obj.options.add(op);
+			}
+		}
+		var province = document.getElementById('fCatelog');
+		createOption(province,provinceArr);
+		
+		var city = document.getElementById('sCatelog');
+		province.onchange=function(){
+			city.options.length=0;
+			createOption(city,cityArr[province.value]);
+		};
+		var country = document.getElementById('tCatelog');
+		city.onchange=function(){
+			country.options.length=0;
+			createOption(country,countryArr[province.value][city.value]);
+		}
+		
+		province.onchange=function(){
+			city.options.length=0;
+			createOption(city,cityArr[province.value]);
+			if(province.value>=0){
+				city.onchange()
+			}else{
+				country.options.length=0;
+			}
+		};
+	</script>
+	
+	<script type="text/javascript">
+	
+	</script>
+	<script type="text/javascript">
+		$("#select").click(function(){
+			$("#aaa tr:gt(0)").remove();
+			
+				function ajaxGetPage(){
+		var temp;
+		 	var fCatelog = $("#fCatelog").val();
+			var sCatelog = $("#sCatelog").val();
+			var tCatelog = $("#tCatelog").val();
+		
+			var cate1 = ""+fCatelog.toString()+","+sCatelog.toString()+","+tCatelog.toString()+"";
+			console.log(cate1)
+			$.ajax({
+				url:"http://www.huanletao.com/products/all",
+					dataType:"json",
+					async:false,
+				type:"POST",
+				data:{
+					cate:cate1,
+					page:1 ,
+					rows:30
+				},
+				success:function(data){
+					temp= data.total
+					console.log(temp)
+				}
+			})
+			return temp;
+		}
+			var page1 = ajaxGetPage();
+			var totalpage = Math.ceil(page1/30)
+			document.getElementById("pzs").innerText=page1;
+			console.log(totalpage)
+		$(function(){
+			
+			     	$("#page").Page({
+          totalPages:  totalpage	,//分页总数
+          liNums: 7,//分页的数字按钮数(建议取奇数)
+          activeClass: 'activP', //active 类样式定义
+          callBack : function(page){
+          	var fCatelog = $("#fCatelog").val();
+			var sCatelog = $("#sCatelog").val();
+			var tCatelog = $("#tCatelog").val();
+		
+			var cate1 = ""+fCatelog.toString()+","+sCatelog.toString()+","+tCatelog.toString()+"";
+			
+          		//console.log(page)
+          		$.ajax({
+				url:"http://www.huanletao.com/products/all",
+				dataType:"json",
+				type:"post",
+				data:{
+					cate:cate1,
+					page:page || 1 ,
+					rows:30
+				},
+				success:function(data){
+					$("#aaa tr:gt(0)").remove();
+					        if(data.rows.length>0){						
+                        $.each(data.rows,function(index, product){
+                        	
+                            var product_html="list.html?productId="+product.productId;
+                            var productId=product.productId;
+                            var aa =  (product.status==1?"上架中":"已下架");
+                          
+//				$("#productData").append("<tr><td>"+product.productName+"</td><td>"+product.productPrice+"</td><td>"+product.sales+"</td><td>"+product.productNum+"</td><td>"+product.productDescription+"</td><td>"+product.startTime+"</td><td><button id='on"+index"' >上架</button><button id='off"+index"'>下架</button></td><td><button id='edit"+index"'>编辑商品</button></td></tr>");
+//	$("#aaa").append("<tr onmousemove=\"this.style.backgroundColor='#ffff66';\" onmouseout=\"this.style.backgroundColor='#d4e3e5';\"\n><td>"+product.productName+"</td></tr>");
+//                 $("#aaa").append("<tr>\n" +
+//		"\t<td>"+product.productName+"</td>\n" +
+//		"\t<td>"+product.productPrice+"</td>\n" +
+//		"\t<td>"+product.sales+"</td>\n" +
+//		"\t<td>"+product.productNum+"</td>\n" +
+//		"\t<td>"+product.productDescription+"</td>\n" +
+//		"\t<td>"+product.status+"</td>\n" +
+//		"\t<td>"+product.startTime+"</td>\n" +
+//		"\t<td><button class='on' id='"+product.productId+"'>上架</button><button id='off"+index+"'>下架</button></td>\n" +
+//		"\t<td><button id='edit"+index+"'>编辑</button></td>\n" +
+//		"</tr>");
+     $("#aaa").append("<tr>\n" +
+		"\t<td>"+product.productName+"</td>\n" +
+		"\t<td>"+product.productPrice+"</td>\n" +
+		"\t<td>"+product.sales+"</td>\n" +
+		"\t<td>"+product.productNum+"</td>\n" +
+		"\t<td>"+product.productDescription+"</td>\n" +
+		"\t<td>"+aa+"</td>\n" +
+		"\t<td>"+new Date(product.startTime).toLocaleString()+"</td>\n" +
+		"\t<td><a href='javascript:void(0)' onclick='addon(\""+productId+"\")'>上架</a><br><a href='javascript:void(0)' onclick='addoff(\""+productId+"\")'>下架</a></td>\n" +
+		"\t<td><a href='javascript:void(0)' onclick='addnew(\""+productId+"\")'>编辑</a></td>\n" +
+		"</tr>");
+                        
+                        })}
+				}
+			})
+          }
+          
+      });
+      
+          });
+			var fCatelog = $("#fCatelog").val();
+			var sCatelog = $("#sCatelog").val();
+			var tCatelog = $("#tCatelog").val();
+			if(fCatelog==-1){
+				alert("请选择分类");
+				return;
+			}
+			var cate1 = ""+fCatelog.toString()+","+sCatelog.toString()+","+tCatelog.toString()+"";
+			
+			console.log(cate1);
+			$.ajax({
+				url:"http://www.huanletao.com/products/all",
+				dataType:"json",
+				type:"post",
+				data:{
+					cate:cate1,
+					page:1 ,
+					rows:30
+				},
+					success:function(data){
+						$("#aaa tr:gt(0)").remove();
+					        if(data.rows.length>0){						
+                        $.each(data.rows,function(index, product){
+                            var product_html="list.html?productId="+product.productId;
+                            var productId=product.productId;
+                            var aa =  (product.status==1?"上架中":"已下架");
+//				$("#productData").append("<tr><td>"+product.productName+"</td><td>"+product.productPrice+"</td><td>"+product.sales+"</td><td>"+product.productNum+"</td><td>"+product.productDescription+"</td><td>"+product.startTime+"</td><td><button id='on"+index"' >上架</button><button id='off"+index"'>下架</button></td><td><button id='edit"+index"'>编辑商品</button></td></tr>");
+//	$("#aaa").append("<tr onmousemove=\"this.style.backgroundColor='#ffff66';\" onmouseout=\"this.style.backgroundColor='#d4e3e5';\"\n><td>"+product.productName+"</td></tr>");
+//                 $("#aaa").append("<tr>\n" +
+//		"\t<td>"+product.productName+"</td>\n" +
+//		"\t<td>"+product.productPrice+"</td>\n" +
+//		"\t<td>"+product.sales+"</td>\n" +
+//		"\t<td>"+product.productNum+"</td>\n" +
+//		"\t<td>"+product.productDescription+"</td>\n" +
+//		"\t<td>"+product.status+"</td>\n" +
+//		"\t<td>"+product.startTime+"</td>\n" +
+//		"\t<td><button class='on' id='"+product.productId+"'>上架</button><button id='off"+index+"'>下架</button></td>\n" +
+//		"\t<td><button id='edit"+index+"'>编辑</button></td>\n" +
+//		"</tr>");
+     $("#aaa").append("<tr>\n" +
+		"\t<td>"+product.productName+"</td>\n" +
+		"\t<td>"+product.productPrice+"</td>\n" +
+		"\t<td>"+product.sales+"</td>\n" +
+		"\t<td>"+product.productNum+"</td>\n" +
+		"\t<td>"+product.productDescription+"</td>\n" +
+		"\t<td>"+aa+"</td>\n" +
+		"\t<td>"+new Date(product.startTime).toLocaleString()+"</td>\n" +
+		"\t<td><a href='javascript:void(0)' onclick='addon(\""+productId+"\")'>上架</a><br><a href='javascript:void(0)' onclick='addoff(\""+productId+"\")'>下架</a></td>\n" +
+		"\t<td><a href='javascript:void(0)' onclick='addnew(\""+productId+"\")'>编辑</a></td>\n" +
+		"</tr>");
+                        })}
+			      
+				}
+			});
+
+		       
+        
+		
+	});
+		          
+	</script>
+	<script type="text/javascript">
+		    function addon(productId){
+            if(productId==null){
+                alert("商品id错误");
+                return;
+            }
+//          if(userId==""||userId==null){
+//              window.location.href="./login.html";
+//              return;
+//          }
+            $.ajax({
+               url:"http://www.huanletao.com/products/on?productId="+productId,
+               dataType:"json",
+               type:"GET",
+               success:function (data) {
+                    if(data.status==200){
+//                      window.location.href="http://www.easymall.com/mycart.html";
+						
+                    }
+                    else{
+                        alert("上架失败");
+                    }
+               } ,
+               error:function () {
+                   alert("发送失败");
+               }
+
+            });
+             alert("上架中");            	
+       sleep();
+	  alert("上架成功");   
+	  					function sleep() {
+    var start = new Date().getTime();
+
+    while(true)  if(new Date().getTime()-start > 1000) break;
+
+    }
+            	var fCatelog = $("#fCatelog").val();
+			var sCatelog = $("#sCatelog").val();
+			var tCatelog = $("#tCatelog").val();
+			if(fCatelog==-1){
+				alert("请选择分类");
+				return;
+			}
+			var cate1 = ""+fCatelog.toString()+","+sCatelog.toString()+","+tCatelog.toString()+"";
+			
+			console.log(cate1);
+			$.ajax({
+				url:"http://www.huanletao.com/products/all",
+				dataType:"json",
+				type:"post",
+				data:{
+					cate:cate1,
+					page:1 ,
+					rows:30
+				},
+					success:function(data){
+						$("#aaa tr:gt(0)").remove();
+					        if(data.rows.length>0){						
+                        $.each(data.rows,function(index, product){
+                            var product_html="list.html?productId="+product.productId;
+                            var productId=product.productId;
+                            var aa =  (product.status==1?"上架中":"已下架");
+//				$("#productData").append("<tr><td>"+product.productName+"</td><td>"+product.productPrice+"</td><td>"+product.sales+"</td><td>"+product.productNum+"</td><td>"+product.productDescription+"</td><td>"+product.startTime+"</td><td><button id='on"+index"' >上架</button><button id='off"+index"'>下架</button></td><td><button id='edit"+index"'>编辑商品</button></td></tr>");
+//	$("#aaa").append("<tr onmousemove=\"this.style.backgroundColor='#ffff66';\" onmouseout=\"this.style.backgroundColor='#d4e3e5';\"\n><td>"+product.productName+"</td></tr>");
+//                 $("#aaa").append("<tr>\n" +
+//		"\t<td>"+product.productName+"</td>\n" +
+//		"\t<td>"+product.productPrice+"</td>\n" +
+//		"\t<td>"+product.sales+"</td>\n" +
+//		"\t<td>"+product.productNum+"</td>\n" +
+//		"\t<td>"+product.productDescription+"</td>\n" +
+//		"\t<td>"+product.status+"</td>\n" +
+//		"\t<td>"+product.startTime+"</td>\n" +
+//		"\t<td><button class='on' id='"+product.productId+"'>上架</button><button id='off"+index+"'>下架</button></td>\n" +
+//		"\t<td><button id='edit"+index+"'>编辑</button></td>\n" +
+//		"</tr>");
+     $("#aaa").append("<tr>\n" +
+		"\t<td>"+product.productName+"</td>\n" +
+		"\t<td>"+product.productPrice+"</td>\n" +
+		"\t<td>"+product.sales+"</td>\n" +
+		"\t<td>"+product.productNum+"</td>\n" +
+		"\t<td>"+product.productDescription+"</td>\n" +
+		"\t<td>"+aa+"</td>\n" +
+		"\t<td>"+new Date(product.startTime).toLocaleString()+"</td>\n" +
+		"\t<td><a href='javascript:void(0)' onclick='addon(\""+productId+"\")'>上架</a><br><a href='javascript:void(0)' onclick='addoff(\""+productId+"\")'>下架</a></td>\n" +
+		"\t<td><a href='javascript:void(0)' onclick='addnew(\""+productId+"\")'>编辑</a></td>\n" +
+		"</tr>");
+                        })}
+			      
+				}
+			});
+
+        }
+		     function addoff(productId){
+            if(productId==null){
+                alert("商品id错误");
+                return;
+            }
+//          if(userId==""||userId==null){
+//              window.location.href="./login.html";
+//              return;
+//          }
+            $.ajax({
+               url:"http://www.huanletao.com/products/off?productId="+productId,
+               dataType:"json",
+               type:"GET",
+               success:function (data) {
+                    if(data.status==200){
+    				
+    				
+                    }
+                    else{
+                        alert("下架失败");
+                    }
+               } ,
+               error:function () {
+                   alert("发送失败");
+               }
+
+            });
+                          
+//                      window.location.href="http://www.easymall.com/mycart.html";
+						function sleep() {
+    var start = new Date().getTime();
+
+    while(true)  if(new Date().getTime()-start > 1000) break;
+
+    }
+			
+                	var fCatelog = $("#fCatelog").val();
+			var sCatelog = $("#sCatelog").val();
+			var tCatelog = $("#tCatelog").val();
+			if(fCatelog==-1){
+				alert("请选择分类");
+				return;
+			}
+			var cate1 = ""+fCatelog.toString()+","+sCatelog.toString()+","+tCatelog.toString()+"";
+			
+			console.log(cate1);
+       alert("下架中");            	
+       sleep();
+	  alert("下架成功");   	
+			
+			$.ajax({
+				url:"http://www.huanletao.com/products/all",
+				dataType:"json",
+				type:"post",
+				data:{
+					cate:cate1,
+					page:1 ,
+					rows:30
+				},
+					success:function(data){
+						$("#aaa tr:gt(0)").remove();
+					        if(data.rows.length>0){						
+                        $.each(data.rows,function(index, product){
+                            var product_html="list.html?productId="+product.productId;
+                            var productId=product.productId;
+                            var aa =  (product.status==1?"上架中":"已下架");
+//				$("#productData").append("<tr><td>"+product.productName+"</td><td>"+product.productPrice+"</td><td>"+product.sales+"</td><td>"+product.productNum+"</td><td>"+product.productDescription+"</td><td>"+product.startTime+"</td><td><button id='on"+index"' >上架</button><button id='off"+index"'>下架</button></td><td><button id='edit"+index"'>编辑商品</button></td></tr>");
+//	$("#aaa").append("<tr onmousemove=\"this.style.backgroundColor='#ffff66';\" onmouseout=\"this.style.backgroundColor='#d4e3e5';\"\n><td>"+product.productName+"</td></tr>");
+//                 $("#aaa").append("<tr>\n" +
+//		"\t<td>"+product.productName+"</td>\n" +
+//		"\t<td>"+product.productPrice+"</td>\n" +
+//		"\t<td>"+product.sales+"</td>\n" +
+//		"\t<td>"+product.productNum+"</td>\n" +
+//		"\t<td>"+product.productDescription+"</td>\n" +
+//		"\t<td>"+product.status+"</td>\n" +
+//		"\t<td>"+product.startTime+"</td>\n" +
+//		"\t<td><button class='on' id='"+product.productId+"'>上架</button><button id='off"+index+"'>下架</button></td>\n" +
+//		"\t<td><button id='edit"+index+"'>编辑</button></td>\n" +
+//		"</tr>");
+
+     $("#aaa").append("<tr>\n" +
+		"\t<td>"+product.productName+"</td>\n" +
+		"\t<td>"+product.productPrice+"</td>\n" +
+		"\t<td>"+product.sales+"</td>\n" +
+		"\t<td>"+product.productNum+"</td>\n" +
+		"\t<td>"+product.productDescription+"</td>\n" +
+		"\t<td>"+aa+"</td>\n" +
+		"\t<td>"+new Date(product.startTime).toLocaleString()+"</td>\n" +
+		"\t<td><a href='javascript:void(0)' onclick='addon(\""+productId+"\")'>上架</a><br><a href='javascript:void(0)' onclick='addoff(\""+productId+"\")'>下架</a></td>\n" +
+		"\t<td><a href='javascript:void(0)' onclick='addnew(\""+productId+"\")'>编辑</a></td>\n" +
+		"</tr>");
+                        })}
+			      
+				}
+			});
+
+            
+        }
+  
+	         function addnew(productId){
+            if(productId==null){
+                alert("商品id错误");
+                return;
+            }
+//          if(userId==""||userId==null){
+//              window.location.href="./login.html";
+//              return;
+//          }
+			document.getElementById('all_light').style.display;
+		    document.getElementById('contes').style.display = 'block';
+		    $('#productId').val(productId);
+	
+//          $.ajax({
+//             url:"http://www.huanletao.com/products/off?productId="+productId,
+//             dataType:"json",
+//             type:"GET",
+//             success:function (data) {
+//                  if(data.status==200){
+////                      window.location.href="http://www.easymall.com/mycart.html";
+//						alert("下架成功")
+//                  }
+//                  else{
+//                      alert("下架失败");
+//                  }
+//             } ,
+//             error:function () {
+//                 alert("发送失败");
+//             }
+//
+//          });
+        }
+  
+	</script>
+	<script type="text/javascript">
+		    	function submit(){
+			 $.post("http://www.huanletao.com/products/renew",$("#renew").serialize(), function(data){
+            if(data.status == 200){
+                alert("修改商品成功");
+            }
+        });
+		}
+	
+		    $("#imgOne").change(function () {
+        var formData = new FormData();
+        formData.append("pic", document.getElementById("imgOne").files[0]);
+        $.ajax({
+            type: "POST", // 数据提交类型
+            url: "http://www.huanletao.com/uploadImg", // 发送地址
+            data: formData, //发送数据
+            async: true, // 是否异步
+            processData: false, //processData 默认为false，当设置为true的时候,jquery ajax 提交的时候不会序列化 data，而是直接使用data
+            contentType: false, //
+            success:function (data) {
+                if(data.error==0){
+                    alert(data.error);
+                    alert(data.url);
+                    document.getElementById("imgInput").value=data.url;
+                   
+                }else{
+                	alert("您上传的图片不合法")
+                }
+            }
+        });
+    });
+   	$("#close").click(function(){
+   		$("#contes").css("display","none");
+   	})
+	</script>
+</html>

@@ -1,0 +1,101 @@
+.none {
+	display: none;
+}
+
+.site_mast .categorys-tab-content {
+	display: none;
+}
+
+.site_mast:hover .categorys-tab-content {
+	display: block;
+}
+
+.hot_tj {
+	font-size: 16px;
+	color: #fff;
+	background: #f42424;
+	float: left;
+	padding: 27px 12px;
+	width: 16px;
+	font-family: "microsoft yahei"
+}
+
+.hot_tj_container {
+	margin-top: 10px;
+}
+
+.hot_tj_list {
+	float: left;
+	position: relative;
+	height: 110px;
+	overflow: hidden;
+	padding: 20px;
+	background-color: #ededed;
+}
+
+.hot_tj_list li {
+	width: 260px;
+	height: 110px;
+	border: 1px solid #fff;
+	float: left;
+	background: #fff;
+	margin-right: 20px;
+}
+.hot_tj_list li:hover{
+    border-color: #ec5051;
+}
+
+.hot_tj_list .item {
+	padding: 10px;
+	float: left;
+}
+
+.hot_tj_list .item .p_img {
+	width: 90px;
+	height: 90px;
+	float: left;
+	margin-right: 12px;
+}
+
+.hot_tj_list .item .p_name {
+	float: left;
+	width: 130px;
+	height: 35px;
+	overflow: hidden;
+}
+
+.hot_tj_list .item .p_price {
+	float: left;
+	color: #f42424;
+	padding-top: 6px;
+	width: 120px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.hot_tj_list .item .p_btn {
+	height: 22px;
+	border: 0;
+	margin-top: 6px;
+}
+
+.hot_tj_list .item .p_btn a {
+	background: #f42424;
+	border-color: #f42424;
+	color: #fff;
+	float: left;
+	padding: 0 10px;
+	line-height: 23px;
+	border: 1px solid #f42424;
+	display: inline-block;
+	margin-right: 5px;
+	font-size: 12px;
+	cursor: pointer;
+}
+.hot_tj_list .item .p_btn a:hover {
+    background: #ec5051;
+    color: #fff;
+}
+.hot_tj_list li.last {
+    margin-right: 0;
+}

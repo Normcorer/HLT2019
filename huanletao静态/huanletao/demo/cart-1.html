@@ -1,0 +1,453 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>购物车</title>
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" href="css/slide.css" />
+		<style>
+			.dsc-search {
+				float: right;
+				margin: 16px 120px 0 78px;
+				width: 546px;
+				position: relative;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="top_banner">
+			<div class="module w1200">
+				<a href="javascript:">
+					<img src="images/active.jpg" />
+					<i class="icon-close"><img src="images/close.png"/></i>
+				</a>
+			</div>
+		</div>
+		<div class="site-nav" id="site-nav">
+			<div class="w w1200">
+				<div class="fl">
+					<div class="city-choice" id="city-choice" data-ectype="dorpdown">
+						<div class="dsc-choie dsc-cm" ectype="dsc-choie">
+							<img src="images/place.png" class="place" />
+							<input type="text" value="北京" class="search" />
+						</div>
+
+					</div>
+					<div class="txt-info" id="ECS_MEMBERZONE">
+						<a href="#" class="link-login red">请登录</a>
+						<a href="#" class="link-regist">免费注册</a>
+					</div>
+				</div>
+				<ul class="quick-menu fr">
+					<li>
+						<div class="dt">
+							<a href="#">我的订单</a>
+						</div>
+					</li>
+					<li class="spacer"></li>
+					<li>
+						<div class="dt">
+							<a href="#">我的浏览</a>
+						</div>
+					</li>
+					<li class="spacer"></li>
+					<li>
+						<div class="dt">
+							<a href="#">我的收藏</a>
+						</div>
+					</li>
+					<li class="spacer"></li>
+					<li>
+						<div class="dt">
+							<a href="#">客户服务</a>
+						</div>
+					</li>
+					<li class="spacer"></li>
+					<li class="li_dorpdown" data-ectype="dorpdown">
+						<div class="dt dsc-cm">网站导航</div>
+						<div class="dd dorpdown-layer" style="z-index: 10000000;">
+							<dl class="fore1">
+								<dt>特色主题</dt>
+								<dd>
+									<div class="item">
+										<a href="#" target="_blank">家用电器</a>
+									</div>
+									<div class="item">
+										<a href="#" target="_blank">手机数码</a>
+									</div>
+									<div class="item">
+										<a href="#" target="_blank">电脑办公</a>
+									</div>
+								</dd>
+							</dl>
+							<dl class="fore2">
+								<dt>促销活动</dt>
+								<dd>
+									<div class="item">
+										<a href="#">拍卖活动</a>
+									</div>
+									<div class="item">
+										<a href="#">共创商品</a>
+									</div>
+									<div class="item">
+										<a href="#">优惠活动</a>
+									</div>
+									<div class="item">
+										<a href="#">批发市场</a>
+									</div>
+									<div class="item">
+										<a href="#">超值礼包</a>
+									</div>
+									<div class="item">
+										<a href="#">优惠券</a>
+									</div>
+								</dd>
+							</dl>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="header">
+			<div class="header_container">
+				<div class="logo fl">
+					<img src="images/logo.png" />
+					<a href="#" class="cart_title">购物车</a>
+				</div>
+				<div class="dsc-search">
+					<div class="form">
+						<form class="search-form">
+							<input name="keywords" type="text" id="keyword" value="" class="search-text" style="color: rgb(153, 153, 153);">
+							<button type="submit" class="button button-icon"><i class="search_form"></i></button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="w1200_container">
+			<div class="no_goods hide">
+				<div class="cart_empt">
+					<div class="cart_message">
+						<div class="txt">购物车快饿瘪了，主人快给我挑点宝贝吧</div>
+						<div class="info">
+							<a href="#" class="btn sc_redBg_btn">马上去逛逛</a>
+							<a href="javascript:void(0);" id="go_pay" class="login">去登录</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="cart_table">
+				<div class="cart_head">
+					<div class="column c_checkbox">
+						<div class="cart_checkbox cart_all_checkbox">
+							<input id="all" type="checkbox">
+							<label for="cart_selectall" class="selectAll">全选</label>
+						</div>
+					</div>
+					<div class="column c_goods">商品</div>
+					<div class="column c_price">单价（元）</div>
+					<div class="column c_quantity">数量</div>
+					<div class="column c_sum">小计</div>
+					<div class="column c_action">操作</div>
+				</div>
+				<div class="cart_tbody" id="list">
+					<div class="cart_item">
+						<div class="item_list" ectype="itemList">
+							<div class="item_single">
+								<div class="item_item selected" id="product_810">
+									<div class="item_form">
+										<div class="cell s_checkbox">
+											<div class="cart_checkbox">
+												<input id="checkItem_17" value="17" name="checkItem" class="ui_checkbox" ectype="ckGoods" type="checkbox">
+											</div>
+										</div>
+										<div class="cell s_goods">
+											<div class="goods_item">
+												<div class="p_img">
+													<a href="#" target="_blank">
+														<img src="images/channel.png" >
+													</a>
+												</div>
+												<div class="item_msg">
+													<a href="#" target="_blank">Hisense/海信 LED49EC270W 49吋液晶平板电视机网络wifi彩电50</a>
+													<div class="gds_types">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell s_price">
+											<strong id="goods_price_17">2499.00</strong>
+										</div>
+										<div class="cell s_quantity">
+											<div class="amount_warp">
+												<input class="text buy_num" value="1" name="number">
+												<div class="a_btn">
+													<a href="javascript:void(0);" class="btn_add"><i class="iconfont icon-up">+</i></a>
+													<a href="javascript:void(0);" class="btn_reduce btn_disabled"><i class="iconfont icon-down">-</i></a>
+												</div>
+											</div>
+											<div class="tc ftx_03">有货</div>
+										</div>
+										<div class="cell s_sum">
+											<strong id="goods_subtotal_17"><font id="_17_subtotal">2499.00</font></strong>
+										</div>
+										<div class="cell s_action">
+											<a href="javascript:void(0);" class="cart-remove">删除</a>
+											<a href="javascript:void(0);" class="cart-store">收藏</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="clear"></div>
+							<div class="item_single">
+								<div class="item_item selected" id="product_810">
+									<div class="item_form">
+										<div class="cell s_checkbox">
+											<div class="cart_checkbox">
+												<input id="checkItem_17" value="17" name="checkItem" class="ui_checkbox" ectype="ckGoods" type="checkbox">
+											</div>
+										</div>
+										<div class="cell s_goods">
+											<div class="goods_item">
+												<div class="p_img">
+													<a href="#" target="_blank">
+														<img src="images/channel.png" >
+													</a>
+												</div>
+												<div class="item_msg">
+													<a href="#" target="_blank">Hisense/海信 LED49EC270W 49吋液晶平板电视机网络wifi彩电50</a>
+													<div class="gds_types">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="cell s_price">
+											<strong id="goods_price_17">2499.00</strong>
+										</div>
+										<div class="cell s_quantity">
+											<div class="amount_warp">
+												<input class="text buy_num" value="1" name="number">
+												<div class="a_btn">
+													<a href="javascript:void(0);" class="btn_add"><i class="iconfont icon-up">+</i></a>
+													<a href="javascript:void(0);" class="btn_reduce btn_disabled"><i class="iconfont icon-down">-</i></a>
+												</div>
+											</div>
+											<div class="tc ftx_03">有货</div>
+										</div>
+										<div class="cell s_sum">
+											<strong id="goods_subtotal_17"><font id="_17_subtotal">2499.00</font></strong>
+										</div>
+										<div class="cell s_action">
+											<a href="javascript:void(0);" class="cart-remove">删除</a>
+											<a href="javascript:void(0);" class="cart-store">收藏</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+		<!--底部-->
+		<div class="footer_con">
+			<div class="fnc_container">
+				<div class="help-list">
+					<div class="help-item">
+						<h3>新手上路 </h3>
+						<ul>
+							<li>
+								<a href="#" title="售后流程" target="_blank">售后流程</a>
+							</li>
+							<li>
+								<a href="#" title="购物流程" target="_blank">购物流程</a>
+							</li>
+							<li>
+								<a href="#" title="订购方式" target="_blank">订购方式</a>
+							</li>
+						</ul>
+
+					</div>
+					<div class="help-item">
+						<h3>配送与支付 </h3>
+						<ul>
+							<li>
+								<a href="#" title="货到付款区域" target="_blank">货到付款区域</a>
+							</li>
+							<li>
+								<a href="#" title="配送支付智能查询 " target="_blank">配送支付智能查询</a>
+							</li>
+							<li>
+								<a href="#" title="支付方式说明" target="_blank">支付方式说明</a>
+							</li>
+						</ul>
+
+					</div>
+					<div class="help-item">
+						<h3>会员中心</h3>
+						<ul>
+							<li>
+								<a href="#" title="资金管理" target="_blank">资金管理</a>
+							</li>
+							<li>
+								<a href="#" title="我的收藏" target="_blank">我的收藏</a>
+							</li>
+							<li>
+								<a href="#" title="我的订单" target="_blank">我的订单</a>
+							</li>
+						</ul>
+
+					</div>
+					<div class="help-item">
+						<h3>服务保证 </h3>
+						<ul>
+							<li>
+								<a href="#" title="退换货原则" target="_blank">退换货原则</a>
+							</li>
+							<li>
+								<a href="#" title="售后服务保证" target="_blank">售后服务保证</a>
+							</li>
+							<li>
+								<a href="#" title="产品质量保证 " target="_blank">产品质量保证</a>
+							</li>
+						</ul>
+
+					</div>
+					<div class="help-item">
+						<h3>联系我们 </h3>
+						<ul>
+							<li>
+								<a href="#" title="网站故障报告" target="_blank">网站故障报告</a>
+							</li>
+							<li>
+								<a href="#" title="选机咨询 " target="_blank">选机咨询</a>
+							</li>
+							<li>
+								<a href="#" title="投诉与建议 " target="_blank">投诉与建议</a>
+							</li>
+						</ul>
+					</div>
+					<div class="help-item">
+						<h3>关注我们 </h3>
+						<img src='images/erweima.png' />
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!--右侧红包栏-->
+		<div class="bk_foot_redbag">
+			<a href="#">
+				<img src="images/red_package.png" width="100%" alt="">
+			</a>
+			<span class="closehd"></span>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/kuCity.js"></script>
+	<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+	<script type="text/javascript" src="js/slide.js"></script>
+	<script>
+		$('.li_dorpdown').hover(function() {
+			$('.dorpdown-layer').show();
+		});
+		$('.li_dorpdown').mouseleave(function() {
+			$('.dorpdown-layer').hide();
+		});
+		$('.icon-close').click(function() {
+			$('.top_banner').hide();
+		});
+		$('.my_center_box_left a').hover(function() {
+
+		});
+		$('.cate-layer-right-slide img').mouseenter(function() {
+
+			$(this).delay('300').animate(300);
+		});
+		$('.cate-layer-right-slide img').mouseleave(function() {
+			$(this).css('border', 'none')
+		});
+		$()
+	</script>
+	<script>
+		$('.search').kuCity();
+	</script>
+	<script language="javascript" type="text/javascript">
+			$(function() {
+				//全选或全不选
+				$("#all").click(function() {
+					if(this.checked) {
+						$("#list :checkbox").prop("checked", true);
+					} else {
+						$("#list :checkbox").prop("checked", false);
+					}
+				});
+				//全选  
+				$("#selectAll").click(function() {
+					$("#list :checkbox,#all").prop("checked", true);
+				});
+//				//全不选
+//				$("#unSelect").click(function() {
+//					$("#list :checkbox,#all").prop("checked", false);
+//				});
+//				//反选 
+//				$("#reverse").click(function() {
+//					$("#list :checkbox").each(function() {
+//						$(this).prop("checked", !$(this).prop("checked"));
+//					});
+//					allchk();
+//				});
+
+				//设置全选复选框
+				$("#list :checkbox").click(function() {
+					allchk();
+				});
+
+				//获取选中选项的值
+				$("#getValue").click(function() {
+					var valArr = new Array;
+					$("#list :checkbox[checked]").each(function(i) {
+						valArr[i] = $(this).val();
+					});
+					var vals = valArr.join(',');
+					alert(vals);
+				});
+			});
+
+			function allchk() {
+				var chknum = $("#list :checkbox").size(); //选项总个数
+				var chk = 0;
+				$("#list :checkbox").each(function() {
+					if($(this).prop("checked") == true) {
+						chk++;
+					}
+				});
+				if(chknum == chk) { //全选
+					$("#all").prop("checked", true);
+				} else { //不全选
+					$("#all").prop("checked", false);
+				}
+			}
+			$('.btn_add').click(function(){
+				var index=$(this).parent().siblings("input").val();
+				index++;
+				$('.buy_num').val(index++);
+			});
+			$('.btn_reduce').click(function(){
+				var index=$('.buy_num').val();
+				if(index>1){
+					index--;
+					$('.buy_num').val(index--);
+				}
+			});
+		</script>
+
+</html>

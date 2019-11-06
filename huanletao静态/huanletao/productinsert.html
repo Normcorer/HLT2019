@@ -1,0 +1,188 @@
+<html>
+
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+
+
+	</head>
+
+	<body>
+
+		<form  id="productInsert" action="http://www.huanletao.com/products/insert" method="get">
+
+			<div id="legend" class="">
+				<input type="hidden" value="" class="leipiplugins" leipiplugins="form_name">
+				<legend class="leipiplugins-orgvalue">商品新增</legend>
+			</div>
+			<div class="control-group">
+				<!-- Text -->
+				<label class="control-label leipiplugins-orgname">商品名称</label>
+				<div class="controls">
+					<input name="productName" type="text" title="商品名称" value="" class="leipiplugins" leipiplugins="text">
+				</div>
+
+			</div>
+
+			<div class="control-group">
+				<!-- Text -->
+				<label class="control-label leipiplugins-orgname">商城价格</label>
+				<div class="controls">
+					<input name="productPrice" type="text" title="商城价格" value="" class="leipiplugins" leipiplugins="text">
+				</div>
+
+			</div>
+
+			<div class="control-group">
+				<!-- Text -->
+				<label class="control-label leipiplugins-orgname">真实价格</label>
+				<div class="controls">
+					<input name="productRprice" type="text" title="真实价格" value="" class="leipiplugins" leipiplugins="text">
+				</div>
+
+			</div>
+
+			<div class="control-group">
+				<!-- Select -->
+				<label class="control-label leipiplugins-orgname">一级分类</label>
+				<div class="controls" id="cate">
+					<select id="fCatelog" name="fCatelog" >
+						<option value="-1">请选择分类</option>
+					</select>
+					<select id="sCatelog"  name="sCatelog" >
+						<option >请选择分类</option>
+					</select>
+					<select id="tCatelog"  name="tCatelog">
+						<option >请选择分类</option>
+					</select>
+				</div>
+
+			</div>
+			<div class="control-group">
+				<!-- Textarea -->
+				<label class="control-label leipiplugins-orgname">商品描述</label>
+				<div class="controls">
+					<div class="textarea">
+						<textarea title="商品描述" name="productDescription" class="leipiplugins" leipiplugins="textarea" orgname="商品描述"> </textarea>
+					</div>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label leipiplugins-orgname">是否上架</label>
+				<div class="controls leipiplugins-orgvalue">
+					<!-- Multiple Checkboxes -->
+					<label class="radio inline">
+<input type="radio" name="status" title="是否上架" value="1" orginline="inline" class="leipiplugins" leipiplugins="radio">是
+</label><label class="radio inline">
+<input type="radio" name="status" title="是否上架" value="0" orginline="inline" class="leipiplugins" leipiplugins="radio">否
+</label></div>
+			</div>
+
+			<div class="control-group">
+				<!-- Text -->
+				<label class="control-label leipiplugins-orgname">商品库存</label>
+				<div class="controls">
+					<input name="productNum" type="text" title="商品库存" value="" class="leipiplugins" leipiplugins="text">
+				</div>
+			</div>
+				<div class="control-group">
+			<label class="control-label leipiplugins-orgname">图片地址</label>
+			<br>
+			<input id="imgInput" type="text" name="productImgurl" value="" />
+		</div>
+		</form>
+		
+		 <form id="form1" action="" method="post" enctype="multipart/form-data">
+        <input  type="file" name="imgOne" class="imgOne" id="imgOne"
+                onchange=""/>
+    	</form>
+		<br>
+
+		<div>
+			<button type="submit" onclick="submit()">提交</button> <button type="reset" onclick="clearForm()">重置</button>
+		</div>
+	</body>
+	<script type="text/javascript">
+		function submit(){
+			 $.post("http://www.huanletao.com/products/insert",$("#productInsert").serialize(), function(data){
+            if(data.status == 200){
+                alert("新增商品成功");
+                document.getElementById("productInsert").reset();
+            }
+        });
+		}
+		function clearForm(){
+			document.getElementById("productInsert").reset();
+		}
+		    $("#imgOne").change(function () {
+        var formData = new FormData();
+        formData.append("pic", document.getElementById("imgOne").files[0]);
+        $.ajax({
+            type: "POST", // 数据提交类型
+            url: "http://www.huanletao.com/uploadImg", // 发送地址
+            data: formData, //发送数据
+            async: true, // 是否异步
+            processData: false, //processData 默认为false，当设置为true的时候,jquery ajax 提交的时候不会序列化 data，而是直接使用data
+            contentType: false, //
+            success:function (data) {
+                if(data.error==0){
+                   
+                    document.getElementById("imgInput").value=data.url;
+                   
+                }else{
+                	alert("您上传的图片不合法")
+                }
+            }
+        });
+    });
+	</script>
+
+	<script type="text/javascript">
+		var provinceArr=['家用电器','手机数码'];
+		var cityArr=[
+		['大家电','生活电器'],
+		['智能设备','数码配件']
+		];
+		var countryArr=[
+			[
+				['平板电视','空调'],
+				['电风扇','冷风扇']
+			],
+			[
+				['智能手环','智能手表'],
+				['存储卡','读卡器']
+			]
+		]
+		function createOption(obj,dara){
+			for(var i in dara){
+				var op = new Option(dara[i],i);
+				obj.options.add(op);
+			}
+		}
+		var province = document.getElementById('fCatelog');
+		createOption(province,provinceArr);
+		
+		var city = document.getElementById('sCatelog');
+		province.onchange=function(){
+			city.options.length=0;
+			createOption(city,cityArr[province.value]);
+		};
+		var country = document.getElementById('tCatelog');
+		city.onchange=function(){
+			country.options.length=0;
+			createOption(country,countryArr[province.value][city.value]);
+		}
+		
+		province.onchange=function(){
+			city.options.length=0;
+			createOption(city,cityArr[province.value]);
+			if(province.value>=0){
+				city.onchange()
+			}else{
+				country.options.length=0;
+			}
+		};
+	</script>
+</html>

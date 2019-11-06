@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/style_xwq.css" />
+		<!--描述:滑动验证码样式-->
+		<title>登录</title>
+		<style type="text/css">
+			.login_big {
+				width: 480px;
+				margin: 0 auto;
+				margin-top: 2%;
+			}
+			
+			.login_small {
+				margin-top: 0%;
+				padding: 0 40px;
+				width: 430px;
+				background: rgba(255, 255, 255, 0.5);
+				border: 1px solid #c9c9c9;
+				border-radius: 5px;
+			}
+			
+			.login_header {
+				background: #f7f8f8;
+				-webkit-box-shadow: 0 1px 10px #c5c3c4;
+				-moz-box-shadow: 0 1px 10px #c5c3c4;
+				-ms-box-shadow: 0 1px 10px #c5c3c4;
+				box-shadow: 0 1px 10px #c5c3c4;
+			}
+			
+			.spantwo {
+				padding: 0 0px;
+				width: 255px;
+				height: 50px;
+				background: rgba(255, 255, 255, 0.5);
+				border: 1px solid #c9c9c9;
+				border-radius: 5px;
+			}
+			
+			.get_yzm_span {
+				width: 120px;
+				margin-top: 30px;
+				margin-right: 0px;
+				border: none;
+				height: 34px;
+				background: #FFFFFF;
+				font-size: 14px;
+				color: #FFFFFF;
+				border-radius: 5px;
+				margin-bottom: 30px;
+				cursor: pointer;
+			}
+			
+			.getregiter_phone_yzm {
+				cursor: pointer;
+				position: absolute;
+				margin-top: 26px;
+				margin-left: 0px;
+				width: 110px;
+				height: 44px;
+				border: none;
+				background: #f2f2f2;
+				color: #333;
+				padding: 0;
+			}
+			
+			.phoenix-btn-item {
+				background: 0;
+				background-image: initial;
+				background-position-x: 0px;
+				background-position-y: center;
+				background-size: initial;
+				background-repeat-x: initial;
+				background-repeat-y: initial;
+				background-attachment: initial;
+				background-origin: initial;
+				background-clip: initial;
+				background-color: initial;
+			}
+			
+			.btn_register {
+				margin-left: 45px;
+				margin-top: 25px;
+				border: none;
+				width: 340px;
+				height: 44px;
+				background: #ee2222;
+				font-size: 18px;
+				color: #FFFFFF;
+				border-radius: 5px;
+				margin-bottom: 0px;
+				cursor: pointer;
+			}
+			/*第三方登录的style*/
+			
+			.authorize-login-item {
+				float: left;
+				margin-left: 50px;
+				font-size: 0;
+			}
+			
+			.qq-login {
+				background: url(img/qq.png) no-repeat;
+				width: 25px;
+				height: 25px;
+				display: inline-block;
+			}
+			
+			.sina-login {
+				background: url(img/weibo.png) no-repeat;
+				width: 25px;
+				height: 25px;
+				display: inline-block;
+			}
+			
+			.wechat-login {
+				background: url(img/weixin.png) no-repeat;
+				width: 25px;
+				height: 25px;
+				display: inline-block;
+				cursor: pointer;
+			}
+			
+			.login-other-ways-login {
+				padding: 20px 26px 0!important;
+				width: 288px;
+				/* margin:0;*/
+				margin-bottom: 20px;
+				margin-left: 45px;
+				border-top: dashed 1px #ebebeb;
+				background-color: #f3f3f3;
+				/*  background-color: #007DDB;*/
+				filter: alpha(opacity=95);
+				opacity: .95;
+				position: relative;
+			}
+			
+			.clearfix:after,
+			.clearfix:before {
+				content: ".";
+				display: block;
+				height: 0;
+				clear: both;
+				visibility: hidden;
+			}
+			
+			.clearfix:after,
+			.clearfix:before {
+				content: ".";
+				display: block;
+				height: 0;
+				clear: both;
+				visibility: hidden;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div class="login_header">
+			<div class="reg_hc">
+				<img src="images/logo.png" />
+				<h4>登录</h4>
+				<span class="forget fr"><a href="./register.html">去注册</a></span>
+			</div>
+		</div>
+		<div class="login_big" >
+			<span class="spantwo">
+			<a id="acountLogin">&nbsp;&nbsp;账号密码登录&nbsp;&nbsp;&nbsp;&nbsp;</a>
+				<a >|</a>
+					<a id="phoneLogin" >&nbsp;&nbsp;&nbsp;&nbsp;手机验证登录&nbsp;&nbsp;</a>
+		    </span>
+			<div class="login_small" style="position: absolute;">
+
+				<div class="clear"></div>
+				<div class="acount_loginDiv" style="padding-top: 40px;">
+					<span>用户名：</span>
+					<img src="images/user.png" class="psw" style="margin-top: 10px;" />
+					<input type="text" name="login_username" id="login_username" class="input_comm" placeholder="请输入用户名" style="margin-top: 0px;">
+					<br />
+					<span>密码：&nbsp;&nbsp;&nbsp;</span>
+					<img src="images/password.png" class="psw" />
+					<input type="password" name="login_username" id="longin_password" class="input_comm" placeholder="请输入密码" />
+					<br />
+					<!--<span>验证码：</span>
+					<input type="text" name="yanzhengma" class="yanzhengma" placeholder="请输入验证码" />
+					<img src="images/yanzhengma.png" class="yanzheng" />
+					<p class="change fr">
+						<a href="#">看不清楚 再换一张</a>
+					</p>-->
+					<div class="clear"></div>
+					<!--<input type="checkbox" name="autoLogin" value="下次自动登录" class="bark" /><span class="bark1">下次自动登录</span>
+					<span class="forget fr"><a href="#">忘记密码</a></span>-->
+					<input type="button" name="acount_denglu" value="登 录" class="btn_register" id="toIndex_acount" />
+				</div>
+				<!--
+                	作者：1506863760@qq.com
+                	时间：2019-10-07
+                	描述：手机验证码登录的div
+                -->
+				<div class="phone_loginDiv" style="padding-top: 40px;">
+					<span>手机号：</span>
+					<img src="images/user.png" class="psw" style="margin-top: 10px;" />
+					<input type="text" name="login_phone" id="login_phone" class="input_comm" placeholder="请输入手机号" style="margin-top: 0px;">
+					<span></span>
+					<br />
+
+					<span>验证码：</span>
+					<input type="text" name="login_phone_yanzhengma" class="yanzhengma" id="login_phone_yanzhengma" placeholder="请输入验证码" />
+					<button class="getregiter_phone_yzm" type="button" id="login_get_yanzhengma_1">获取手机验证码</button>
+					<div class="clear"></div>
+					<input type="button" name="phone_denglu" value="登 录" class="btn_register" id="toIndex_phone_1" />
+				</div>
+				<div class='login-other-ways-login '>
+					<div class='authorize-login ' id='utopia_widget_7'>
+						<!--<p class='clearfix authorize-login-title'>
+<span class='authorize-login-title-left'>
+使用第三方账号登录
+</span>
+</p>-->
+						<ul class='clearfix authorize-login-list'>
+
+							<li class='authorize-login-item'>
+								<a href='javascript:void(0)' class='j-authorize-login-item sina-login oauth-param' title='微博登录'></a>
+							</li>
+							<li class='authorize-login-item'>
+								<a href='javascript:void(0)' class='j-authorize-login-item qq-login oauth-param' title='QQ登录'></a>
+							</li>
+							<li class='authorize-login-item'>
+								<span class='j-authorize-login-item wechat-login' title='微信登录'></span>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div id="slideBar" style="position: relative; left: 20% ;top: 0%;"></div>
+			<!--验证码的div -->
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/style_xwq.js"></script>
+	<script src="js/login_register.js"></script>
+	<script>
+		var dataList = ["0", "1"];
+		var options = {
+			dataList: dataList,
+			success: function() {
+				console.log("show");
+			},
+			fail: function() {
+				console.log("fail");
+			}
+		};
+		SliderBar("slideBar", options);
+		$(function() {
+			$('.acount_loginDiv').show();
+			$('.phone_loginDiv').hide();
+			$('#slideBar').hide(); //隐藏验证码
+		});
+		$("#toIndex_acount").click(function() {
+			$('#slideBar').show();
+		})
+		$('#acountLogin').click(function() {
+			$('.acount_loginDiv').show();
+			$('.login-other-ways-login').show();
+			$('.phone_loginDiv').hide();
+
+		});
+		$('#phoneLogin').click(function() {
+			$('.acount_loginDiv').hide();
+			$('.login-other-ways-login').hide();
+			$('.phone_loginDiv').show();
+
+		});
+		$("#toIndex").click(function() {
+			window.location.href = "index.html"
+		})
+	</script>
+
+</html>
